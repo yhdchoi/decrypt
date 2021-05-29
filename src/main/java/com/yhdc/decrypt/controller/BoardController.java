@@ -1,5 +1,5 @@
 package com.yhdc.decrypt.controller;
 
-public class ArticleController {
+public class BoardController {
 
 }

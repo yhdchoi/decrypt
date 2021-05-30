@@ -15,70 +15,54 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 	private final UserRepository userRepository;
 
-	// LIST
+// LIST
 	@Transactional(readOnly = true)
 	public List<User> getAllUser() {
 		return userRepository.findAll();
 	}
 
-	// GET
+// GET
 	@Transactional(readOnly = true)
 	public User getUserById(Long id) {
-		User userEntity = userRepository.getById(id);
+		User userEntity = userRepository.findById(id).get();
 		return userEntity;
 	}
 
-	@Transactional(readOnly = true)
-	public User getUserByUsername(String username) {
-		User userEntity = userRepository.findByUsername(username)
-				.orElseThrow(() -> new IllegalArgumentException("Please check the username again."));
-
-		return userEntity;
-	}
-
-	// NEW
+// NEW
 	@Transactional
 	public User postUser(User user) {
 		User newUserEntity = userRepository.save(user);
 		return newUserEntity;
 	}
 
-	// UPDATE username, email, role
+// UPDATE USERNAME, EMAIL, ROLE
 	@Transactional
-	public User putUser(Long id, String username, String email, String role) {
-		User userEntity = userRepository.getById(id);
-
-		if (username != null || username != "") {
-			userEntity.setUsername(username);
-		}
-		if (email != null || email != "") {
-			userEntity.setEmail(email);
-		}
-		if (role != null || role != "") {
-			userEntity.setRole(role);
-		}
+	public User putUser(Long id, User user) {
+		User userEntity = userRepository.findById(id).get();
+		userEntity.setUsername(user.getUsername());
+		userEntity.setEmail(user.getEmail());
+		userEntity.setRole(user.getRole());
 		return userEntity;
 	}
 
-	// UPDATE password
+// UPDATE PASSWORD
 	@Transactional
 	public User patchUserPassword(Long id, String newPassword) {
-		User userEntity = userRepository.getById(id);
+		User userEntity = userRepository.findById(id).get();
 		userEntity.setPassword(newPassword);
 		return userEntity;
 	}
 
-	// DELETE
+// DELETE
 	@Transactional
 	public int deleteUser(Long id) {
-		User delUser = userRepository.getById(id);
+		User delUser = userRepository.findById(id).get();
 
 		if (delUser == null) {
 			return 0;
 		} else {
 			userRepository.delete(delUser);
 		}
-
 		return 1;
 	}
 }

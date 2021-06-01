@@ -61,7 +61,7 @@ public class CommentController {
 
 		// TODO: Check Permit
 
-		Comment comment = commentService.postComment(newcomment);
+		Comment comment = commentService.postComment(newcomment);		
 		ResponseEntity<Message> reponseMessage = responseMsg.MessageTemplate(comment, StatusEnum.BAD_REQUEST,
 				StatusEnum.CREATED);
 

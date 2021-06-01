@@ -1,6 +1,10 @@
 package com.yhdc.decrypt.response;
 
+import java.nio.charset.Charset;
+
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
@@ -8,13 +12,13 @@ import org.springframework.stereotype.Component;
 public class ResponseMsg {
 
 // COMMON TEMPLATES
-//	public HttpHeaders HeaderInsert() {
-//
-//		HttpHeaders headers = new HttpHeaders();
-//		headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
-//
-//		return headers;
-//	}
+	public HttpHeaders HeaderInsert() {
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(new MediaType("application", "json", Charset.forName("UTF-8")));
+
+		return headers;
+	}
 
 	public Message UserTemplate(StatusEnum statusEnum, String msg, Object data) {
 		Message message = new Message();
@@ -34,9 +38,8 @@ public class ResponseMsg {
 		return message;
 	}
 
-
 	public ResponseEntity<Message> MessageTemplate(Object data, StatusEnum errorStatus, StatusEnum passStatus) {
-//		HttpHeaders headers = HeaderInsert();
+		HttpHeaders headers = HeaderInsert();
 		Message message = null;
 		HttpStatus status = null;
 
@@ -48,12 +51,11 @@ public class ResponseMsg {
 			status = HttpStatus.OK;
 		}
 
-		return new ResponseEntity<>(message, status);
+		return new ResponseEntity<>(message, headers, status);
 	}
 
-	public ResponseEntity<Message> MessageDelTemplate(int returnCode, StatusEnum errorStatus,
-			StatusEnum passStatus) {
-//		HttpHeaders headers = HeaderInsert();
+	public ResponseEntity<Message> MessageDelTemplate(int returnCode, StatusEnum errorStatus, StatusEnum passStatus) {
+		HttpHeaders headers = HeaderInsert();
 		Message message = null;
 		HttpStatus status = null;
 
@@ -65,7 +67,7 @@ public class ResponseMsg {
 			status = HttpStatus.OK;
 		}
 
-		return new ResponseEntity<>(message, status);
+		return new ResponseEntity<>(message, headers, status);
 	}
 
 }

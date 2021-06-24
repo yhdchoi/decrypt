@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -17,18 +16,20 @@ import lombok.ToString;
 @Entity
 @Data
 @ToString
-public class Comment {
+public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne
-	private User user;
+	private String username;
+	private String email;
+	private String password;
+	private String firstname;
+	private String lastname;
+	private String role;
+	private String authority;
+	private String active;
 
-	@ManyToOne
-	private Board board;
-
-	private String body;
 
 	@CreationTimestamp
 	private Timestamp createDate;

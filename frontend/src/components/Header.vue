@@ -13,23 +13,23 @@
             <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
           </DisclosureButton>
         </div>
+
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           <div class="flex-shrink-0 flex items-center">
-              <router-link :to="{ name: 'Home' }" class="hidden lg:block h-18 w-auto text-gray-50 text-lg font-bold">DEcrypt</router-link>
-            <!-- <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow" /> -->
-            <!-- <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow" /> -->
+              <router-link :to="{ name: 'Home' }" class="hidden lg:block h-18 w-auto text-gray-50 text-lg font-bold hover:text-green-500">DEcrypt</router-link>
           </div>
-
-           <!-- <div class="hidden md:block md:ml-10"> -->
-            <!-- <div class="flex space-x-4"> -->                
-              <!-- <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'px-3 py-2 rounded-md text-sm font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a> -->
-            <!-- </div> -->
-          <!-- </div> -->
-
+           <div class="hidden md:block md:ml-5">
+            <div class="flex space-x-4">   
+                <router-link :to="{ name: 'About' }" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</router-link>
+                <router-link :to="{ name: 'Browse' }" class="text-gray-300 hover:bg-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">GET</router-link>
+                <router-link :to="{ name: 'Contact' }" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</router-link>
+            </div>
+          </div>
         </div>
 
         <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-          <div class="hidden md:block md:mr-10">
+<!-- Search Bar -->
+          <!-- <div class="hidden md:block md:mr-10">
                 <div class="relative text-gray-600">
                     <input type="search" name="serch" placeholder="Search" class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
                     <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
@@ -38,11 +38,12 @@
                         </svg>
                     </button>
                 </div>
-          </div>
+          </div> -->
+
           <!-- Notification Icon  -->
-          <button class="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+          <button class="bg-gray-800 p-1 rounded-full text-gray-400">
             <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
+            <BellIcon class="h-6 w-6 hover:text-red-500" aria-hidden="true" />
           </button>
 
           <!-- Profile dropdown -->
@@ -55,7 +56,7 @@
             </div>
 
             <!-- If Logged In -->
-            <div>
+            <div >
             <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
               <MenuItems class="origin-top-right absolute right-0 mt-4 w-48 rounded-md shadow-lg py-1 bg-gray-50 ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <MenuItem v-slot="{ active }">
@@ -99,13 +100,6 @@
 import { ref } from 'vue'
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-
-// const navigation = [
-//   { name: 'Dashboard', href: '#', current: true },
-//   { name: 'Team', href: '#', current: false },
-//   { name: 'Projects', href: '#', current: false },
-//   { name: 'Calendar', href: '#', current: false },
-// ]
 
 export default {
   components: {

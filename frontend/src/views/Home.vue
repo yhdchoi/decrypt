@@ -79,47 +79,13 @@
       <div class="h-72 p-1 bg-gray-900 font-mono">
         <div class="my-3">
           <span class="text-green-500">➜</span>
-          <span class="text-cyan-500">~</span>
-          <span>ls -la</span>
+          <span>Hello World!</span>
+          <span class="text-green-500">↲</span>
         </div>
-        <form action="">
-          <div class="mb-6">
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Title"
-              class="
-                w-full
-                px-3
-                py-2
-                placeholder-gray-300
-                border border-gray-300
-                bg-transparent                
-              "
-              required
-            />
-          </div>
-          <div class="mb-6">
-            <textarea
-              rows="10"
-              name="message"
-              id="message"
-              placeholder="Your Message"
-              class="
-                w-full
-                px-3
-                py-2
-                placeholder-gray-300
-                border border-gray-300
-                bg-transparent
-                overflow-auto
-                resize-none                
-              "
-              required
-            ></textarea>
-          </div>
-        </form>
+        <div class="mb-3">
+          <span class="text-green-600">This WEB Space is for storing and sharing OR 'DEcrypting' your thoughts~</span>
+
+        </div>
       </div>
     </div>
   </div>
@@ -197,6 +163,5 @@
 <script>
 export default {
   name: "Home",
-  components: {},
 };
 </script>

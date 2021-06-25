@@ -81,6 +81,15 @@
   </body>
 </template>
 
+<script>
+export default {
+  name: "GridBoard",
+
+}
+
+</script>
+
+
  <style scoped>
         @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap');
 

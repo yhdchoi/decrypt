@@ -1,5 +1,5 @@
 <template>
-    <div class="max-h-screen my-10 flex justify-center items-center">
+  <div class="h-screen bg-gray-200 flex justify-center items-center">
     <div
       class="w-2/3 text-gray-300 rounded-t shadow-lg overflow-hidden text-xs"
     >
@@ -76,49 +76,87 @@
         </div>
       </div>
       <div class="h-72 p-1 bg-gray-900 font-mono">
-        <div class="my-3">
-          <span class="text-green-500">➜</span>
-          <span class="text-cyan-500">~</span>
-          <span>New Post</span>
+        <span class="text-green-500">➜</span>
+        <span class="text-cyan-500">~</span>
+        <span>ls -la</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-1/2 mx-auto">
+    <div
+      class="
+        w-full
+        shadow-2xl
+        subpixel-antialiased
+        rounded
+        h-64
+        bg-black
+        border-black
+        mx-auto
+      "
+    >
+      <div
+        class="
+          flex
+          items-center
+          h-6
+          rounded-t
+          bg-gray-100
+          border-b border-gray-500
+          text-center text-black
+        "
+        id="headerTerminal"
+      >
+        <div
+          class="
+            flex
+            ml-2
+            items-center
+            text-center
+            border-red-900
+            bg-red-500
+            shadow-inner
+            rounded-full
+            w-3
+            h-3
+          "
+          id="closebtn"
+        ></div>
+        <div
+          class="
+            ml-2
+            border-yellow-900
+            bg-yellow-500
+            shadow-inner
+            rounded-full
+            w-3
+            h-3
+          "
+          id="minbtn"
+        ></div>
+        <div
+          class="
+            ml-2
+            border-green-900
+            bg-green-500
+            shadow-inner
+            rounded-full
+            w-3
+            h-3
+          "
+          id="maxbtn"
+        ></div>
+        <div class="mx-auto pr-16" id="terminaltitle">
+          <p class="text-center text-sm">Terminal</p>
         </div>
-        <form action="">
-          <div class="mb-6">
-            <input
-              type="text"
-              name="name"
-              id="name"
-              placeholder="Title"
-              class="
-                w-full
-                px-3
-                py-2
-                placeholder-gray-300
-                border border-gray-300
-                bg-transparent                
-              "
-              required
-            />
-          </div>
-          <div class="mb-6">
-            <textarea
-              rows="10"
-              name="message"
-              id="message"
-              placeholder="Your Message"
-              class="
-                w-full
-                px-3
-                py-2
-                placeholder-gray-300
-                border border-gray-300
-                bg-transparent
-                overflow-auto
-                resize-none                
-              "
-              required
-            ></textarea>
-          </div>
-        </form>
+      </div>
+      <div
+        class="pl-1 pt-1 h-auto text-green-200 font-mono text-xs bg-black"
+        id="console"
+      >
+        <p class="pb-1">Last login: Wed Sep 25 09:11:04 on ttys002</p>
+        <p class="pb-1">Laraben:Devprojects laraben$</p>
       </div>
     </div>
   </div>

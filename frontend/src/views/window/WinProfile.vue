@@ -2,6 +2,7 @@
   <div class="bg-gray-100">
     <div class="container mx-auto my-5 p-5">
       <div class="md:flex no-wrap md:-mx-2">
+
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2">
           <!-- Profile Card -->
@@ -19,7 +20,12 @@
             <h3 class="text-gray-600 font-lg text-semibold leading-6">
               Company Inc.
             </h3>
-            <p class="text-sm text-gray-500 leading-6">BIO about yourself.</p>
+            <p class="text-sm text-gray-500 leading-6">
+              INTRO Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut
+              nihil quae odit quibusdam quidem, ipsa veritatis eaque, iusto
+              mollitia consequatur sed facilis beatae deserunt, dolore commodi
+              accusamus ex inventore. Tempora.
+            </p>
             <ul
               class="
                 bg-gray-100
@@ -159,7 +165,7 @@
                       />
                     </svg>
                   </span>
-
+                  
                   <!-- Experience -->
                   <span class="tracking-wide">Experience</span>
                 </div>
@@ -167,7 +173,7 @@
                   <li>
                     <div class="text-teal-600">Owner at Her Company Inc.</div>
                     <div class="text-gray-500 text-xs">March 2020 - Now</div>
-                  </li>
+                  </li>                  
                 </ul>
               </div>
 
@@ -222,19 +228,12 @@
       </div>
     </div>
   </div>
-  <!-- Edit -->
-  <div>
-    <div class="flex justify-center">
-      <button class="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
-        Edit My Profile
-      </button>
-    </div>
-  </div>
+  
 </template>
 
 <script>
   export default {
-    name: "Profile",
+    name: "WinProfile",
   };
 </script>
 

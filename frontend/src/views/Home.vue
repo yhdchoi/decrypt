@@ -83,8 +83,10 @@
           <span class="text-green-500">↲</span>
         </div>
         <div class="mb-3">
-          <span class="text-green-600">This WEB Space is for storing and sharing OR 'DEcrypting' your thoughts~</span>
-
+          <span class="text-green-600"
+            >This WEB Space is for storing and sharing OR 'DEcrypting' your
+            thoughts~</span
+          >
         </div>
       </div>
     </div>
@@ -92,7 +94,6 @@
 
   <!-- Recent Posts -->
   <div class="relative max-h-screen pb-20 font-mono text-cyan-900">
-
     <div class="flex justify-center py-5">
       <div class="container max-w-3xl p-4">
         <h1 class="py-5">Recent Posts:</h1>
@@ -156,12 +157,10 @@
       </div>
     </div>
   </div>
-
-  
 </template>
 
 <script>
-export default {
-  name: "Home",
-};
+  export default {
+    name: "Home",
+  };
 </script>

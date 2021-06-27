@@ -13,13 +13,24 @@
                 alt=""
               />
             </div>
-            <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              FullName
-            </h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6">
-              Company Inc.
-            </h3>
-            <p class="text-sm text-gray-500 leading-6">BIO about yourself.</p>
+            <input
+              type="text"
+              class="font-bold text-xl leading-8 my-1"
+              placeholder="FullName"
+            />
+            <input
+              type="text"
+              class="font-lg text-semibold leading-6"
+              placeholder="Company Inc."
+            />
+            <textarea
+              class="text-sm leading-6"
+              placeholder="BIO"
+              name=""
+              id=""
+              cols="30"
+              rows="10"
+            ></textarea>
             <ul
               class="
                 bg-gray-100
@@ -41,10 +52,6 @@
                     >Active</span
                   ></span
                 >
-              </li>
-              <li class="flex items-center py-3">
-                <span class="text-sm">Member since : </span>
-                <span class="ml-auto text-xs">Nov 07, 2016</span>
               </li>
             </ul>
           </div>
@@ -87,11 +94,15 @@
               <div class="grid md:grid-cols-2 text-sm">
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">First Name</div>
-                  <div class="px-4 py-2">Jane</div>
+                  <input
+                    type="text"
+                    class="px-4 py-2"
+                    placeholder="Firstname"
+                  />
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Last Name</div>
-                  <div class="px-4 py-2">Doe</div>
+                  <input type="text" class="px-4 py-2" placeholder="Doe" />
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Gender</div>
@@ -99,7 +110,11 @@
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Contact No.</div>
-                  <div class="px-4 py-2">+11 998001001</div>
+                  <input
+                    type="text"
+                    class="px-4 py-2"
+                    placeholder="Phone Number"
+                  />
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Current Address</div>
@@ -111,15 +126,15 @@
                 </div>
                 <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email.</div>
-                  <div class="px-4 py-2">
-                    <a class="text-blue-800" href="mailto:jane@example.com"
-                      >jane@example.com</a
-                    >
-                  </div>
+                  <input
+                    type="text"
+                    class="px-4 py-2"
+                    placeholder="jane@example.com"
+                  />
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Birthday</div>
-                  <div class="px-4 py-2">Feb 06, 1998</div>
+                  <div class="px-4 py-2 font-semibold">Member since</div>
+                  <div class="px-4 py-2">Nov 07, 2016</div>
                 </div>
               </div>
             </div>
@@ -165,8 +180,8 @@
                 </div>
                 <ul class="list-inside space-y-2">
                   <li>
-                    <div class="text-teal-600">Owner at Her Company Inc.</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <input type="text" placeholder="Company" />
+                    <input class="text-gray-500 text-xs" placeholder="March 2020 - Now" />
                   </li>
                 </ul>
               </div>
@@ -209,8 +224,12 @@
                 </div>
                 <ul class="list-inside space-y-2">
                   <li>
-                    <div class="text-teal-600">Masters Degree in Oxford</div>
-                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                    <input
+                      type="text"
+                      class=""
+                      placeholder="School and Degree"
+                    />
+                    <input class="text-gray-500 text-xs" placeholder="March 2020 - Now" />
                   </li>
                 </ul>
               </div>
@@ -222,11 +241,11 @@
       </div>
     </div>
   </div>
-  <!-- Edit -->
+  <!-- Save -->
   <div>
     <div class="flex justify-center">
       <button class="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
-        Edit My Profile
+        Save
       </button>
     </div>
   </div>

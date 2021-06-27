@@ -1,5 +1,7 @@
 <template>
-    <div class="px-10 my-4 py-6 rounded shadow-xl bg-white w-4/5 mx-auto max-h-60">
+  <div
+    class="px-10 my-4 py-6 rounded shadow-xl bg-white w-4/5 mx-auto max-h-60"
+  >
     <div class="flex justify-between items-center">
       <span class="font-light text-gray-600">March 28, 2021</span>
       <a

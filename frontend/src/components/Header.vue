@@ -7,28 +7,117 @@
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
           <!-- Mobile menu button-->
-          <DisclosureButton class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+          <DisclosureButton
+            class="
+              inline-flex
+              items-center
+              justify-center
+              p-2
+              rounded-md
+              text-gray-400
+              hover:text-white hover:bg-gray-700
+              focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white
+            "
+          >
             <span class="sr-only">Open main menu</span>
             <MenuIcon v-if="!open" class="block h-6 w-6" aria-hidden="true" />
             <XIcon v-else class="block h-6 w-6" aria-hidden="true" />
           </DisclosureButton>
         </div>
 
-        <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+        <div
+          class="
+            flex-1 flex
+            items-center
+            justify-center
+            sm:items-stretch sm:justify-start
+          "
+        >
           <div class="flex-shrink-0 flex items-center">
-              <router-link :to="{ name: 'Home' }" class="hidden lg:block h-18 w-auto text-gray-50 text-lg font-bold hover:text-green-500">DEcrypt</router-link>
+            <router-link
+              :to="{ name: 'Home' }"
+              class="
+                hidden
+                lg:block
+                h-18
+                w-auto
+                text-gray-50 text-lg
+                font-bold
+                hover:text-purple-500
+              "
+              >DEcrypt</router-link
+            >
           </div>
-           <div class="hidden md:block md:ml-5">
-            <div class="flex space-x-4">   
-                <router-link :to="{ name: 'About' }" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</router-link>
-                <router-link :to="{ name: 'Browse' }" class="text-gray-300 hover:bg-gray-700 hover:text-blue-500 px-3 py-2 rounded-md text-sm font-medium">GET</router-link>
-                <router-link :to="{ name: 'Contact' }" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contact</router-link>
+          <div class="hidden md:block md:ml-5">
+            <div class="flex space-x-4">
+              <router-link
+                :to="{ name: 'About' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-white
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >About</router-link
+              >
+              <router-link
+                :to="{ name: 'GetBoard' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-yellow-500
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >GET</router-link
+              >
+              <router-link
+                :to="{ name: 'PostBoard' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-blue-500
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >POST</router-link
+              >
+              <router-link
+                :to="{ name: 'Contact' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-white
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >Contact</router-link
+              >
             </div>
           </div>
         </div>
 
-        <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-<!-- Search Bar -->
+        <div
+          class="
+            absolute
+            inset-y-0
+            right-0
+            flex
+            items-center
+            pr-2
+            sm:static sm:inset-auto sm:ml-6 sm:pr-0
+          "
+        >
+          <!-- Search Bar -->
           <!-- <div class="hidden md:block md:mr-10">
                 <div class="relative text-gray-600">
                     <input type="search" name="serch" placeholder="Search" class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none">
@@ -47,42 +136,101 @@
           </button>
 
           <!-- Profile dropdown -->
-          <Menu as="div" class="ml-3 relative">
+          <Menu as="div" class="ml-3 relative z-10">
             <div>
-              <MenuButton class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+              <MenuButton
+                class="
+                  bg-gray-800
+                  flex
+                  text-sm
+                  rounded-full
+                  focus:outline-none
+                  focus:ring-2
+                  focus:ring-offset-2
+                  focus:ring-offset-gray-800
+                  focus:ring-white
+                "
+              >
                 <span class="sr-only">Open user menu</span>
-                <img class="h-8 w-8 rounded-full" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
               </MenuButton>
             </div>
 
             <!-- If Logged In -->
-            <div >
-            <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-              <MenuItems class="origin-top-right absolute right-0 mt-4 w-48 rounded-md shadow-lg py-1 bg-gray-50 ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-300' : '', 'block px-4 py-2 text-sm text-gray-700']">Your Profile</a>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-300' : '', 'block px-4 py-2 text-sm text-gray-700']">Dashboard</a>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-300' : '', 'block px-4 py-2 text-sm text-gray-700']">Settings</a>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-300' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-300' : '', 'block px-4 py-2 text-sm text-gray-700']">Contact</a>
-                </MenuItem>
-              </MenuItems>
-            </transition>
+            <div>
+              <transition
+                enter-active-class="transition ease-out duration-100"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
+              >
+                <MenuItems
+                  class="
+                    origin-top-right
+                    absolute
+                    right-0
+                    mt-5
+                    w-48
+                    rounded-md
+                    shadow-lg
+                    py-1
+                    bg-gray-100
+                    ring-1 ring-black ring-opacity-5
+                    focus:outline-none
+                  "
+                >
+                  <MenuItem v-slot="{ active }">
+                    <router-link
+                      :to="{ name: 'Profile' }"
+                      :class="[
+                        active ? 'bg-gray-300' : '',
+                        'block px-4 py-2 text-sm text-gray-700',
+                      ]"
+                      >Your Profile</router-link
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <router-link
+                      :to="{ name: 'Inbox' }"
+                      :class="[
+                        active ? 'bg-gray-300' : '',
+                        'block px-4 py-2 text-sm text-gray-700',
+                      ]"
+                      >Inbox</router-link
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <router-link
+                      :to="{ name: 'Settings' }"
+                      :class="[
+                        active ? 'bg-gray-300' : '',
+                        'block px-4 py-2 text-sm text-gray-700',
+                      ]"
+                      >Settings</router-link
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <a
+                      href="#"
+                      :class="[
+                        active ? 'bg-gray-300' : '',
+                        'block px-4 py-2 text-sm text-gray-700',
+                      ]"
+                      >Sign out</a
+                    >
+                  </MenuItem>
+                </MenuItems>
+              </transition>
             </div>
 
             <!-- If Logged Out -->
-            <div>
-
-            </div>
-
+            <div></div>
           </Menu>
         </div>
       </div>
@@ -90,19 +238,27 @@
 
     <DisclosurePanel class="sm:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1">
-        <a v-for="item in navigation" :key="item.name" :href="item.href" :class="[item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', 'block px-3 py-2 rounded-md text-base font-medium']" :aria-current="item.current ? 'page' : undefined">{{ item.name }}</a>
+        <a
+          v-for="item in navigation"
+          :key="item.name"
+          :href="item.href"
+          :class="[
+            item.current
+              ? 'bg-gray-900 text-white'
+              : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+            'block px-3 py-2 rounded-md text-base font-medium',
+          ]"
+          :aria-current="item.current ? 'page' : undefined"
+          >{{ item.name }}</a
+        >
       </div>
     </DisclosurePanel>
   </Disclosure>
 </template>
 
 <script>
-import { ref } from 'vue'
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-
-export default {
-  components: {
+  import { ref } from "vue";
+  import {
     Disclosure,
     DisclosureButton,
     DisclosurePanel,
@@ -110,15 +266,27 @@ export default {
     MenuButton,
     MenuItem,
     MenuItems,
-    BellIcon,
-    MenuIcon,
-    XIcon,
-  },
-  setup() {
-    const open = ref(false)
-    return {
-      open,
-    }
-  },
-}
+  } from "@headlessui/vue";
+  import { BellIcon, MenuIcon, XIcon } from "@heroicons/vue/outline";
+
+  export default {
+    components: {
+      Disclosure,
+      DisclosureButton,
+      DisclosurePanel,
+      Menu,
+      MenuButton,
+      MenuItem,
+      MenuItems,
+      BellIcon,
+      MenuIcon,
+      XIcon,
+    },
+    setup() {
+      const open = ref(false);
+      return {
+        open,
+      };
+    },
+  };
 </script>

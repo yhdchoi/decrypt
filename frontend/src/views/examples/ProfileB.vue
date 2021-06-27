@@ -5,21 +5,25 @@
         <!-- Left Side -->
         <div class="w-full md:w-3/12 md:mx-2">
           <!-- Profile Card -->
-          <div class="bg-white p-3 min-h-100 border-t-4 border-gray-500">
+          <div class="bg-white p-3 border-t-4 border-green-400">
             <div class="image overflow-hidden">
               <img
-                class="h-52 w-52 mx-auto"
+                class="h-auto w-full mx-auto"
                 src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                 alt=""
               />
             </div>
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              FullName
+              Jane Doe
             </h1>
             <h3 class="text-gray-600 font-lg text-semibold leading-6">
-              Company Inc.
+              Owner at Her Company Inc.
             </h3>
-            <p class="text-sm text-gray-500 leading-6">BIO about yourself.</p>
+            <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Reprehenderit, eligendi dolorum sequi illum qui unde aspernatur
+              non deserunt
+            </p>
             <ul
               class="
                 bg-gray-100
@@ -43,18 +47,19 @@
                 >
               </li>
               <li class="flex items-center py-3">
-                <span class="text-sm">Member since : </span>
-                <span class="ml-auto text-xs">Nov 07, 2016</span>
+                <span>Member since</span>
+                <span class="ml-auto">Nov 07, 2016</span>
               </li>
             </ul>
           </div>
           <!-- End of profile card -->
+          <div class="my-4"></div>
         </div>
-
         <!-- Right Side -->
         <div class="w-full md:w-9/12 mx-2 h-64">
+          <!-- Profile tab -->
           <!-- About Section -->
-          <div class="bg-white min-h-50 p-3 shadow-sm rounded-sm">
+          <div class="bg-white p-3 shadow-sm rounded-sm">
             <div
               class="
                 flex
@@ -123,13 +128,29 @@
                 </div>
               </div>
             </div>
+            <button
+              class="
+                block
+                w-full
+                text-blue-800 text-sm
+                font-semibold
+                rounded-lg
+                hover:bg-gray-100
+                focus:outline-none focus:shadow-outline focus:bg-gray-100
+                hover:shadow-xs
+                p-3
+                my-4
+              "
+            >
+              Show Full Information
+            </button>
           </div>
           <!-- End of about section -->
 
           <div class="my-4"></div>
 
-          <!-- Experience and Education -->
-          <div class="bg-white min-h-50 p-3 shadow-sm rounded-sm">
+          <!-- Experience and education -->
+          <div class="bg-white p-3 shadow-sm rounded-sm">
             <div class="grid grid-cols-2">
               <div>
                 <div
@@ -159,8 +180,6 @@
                       />
                     </svg>
                   </span>
-
-                  <!-- Experience -->
                   <span class="tracking-wide">Experience</span>
                 </div>
                 <ul class="list-inside space-y-2">
@@ -168,10 +187,20 @@
                     <div class="text-teal-600">Owner at Her Company Inc.</div>
                     <div class="text-gray-500 text-xs">March 2020 - Now</div>
                   </li>
+                  <li>
+                    <div class="text-teal-600">Owner at Her Company Inc.</div>
+                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                  </li>
+                  <li>
+                    <div class="text-teal-600">Owner at Her Company Inc.</div>
+                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                  </li>
+                  <li>
+                    <div class="text-teal-600">Owner at Her Company Inc.</div>
+                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                  </li>
                 </ul>
               </div>
-
-              <!-- Education -->
               <div>
                 <div
                   class="
@@ -212,6 +241,10 @@
                     <div class="text-teal-600">Masters Degree in Oxford</div>
                     <div class="text-gray-500 text-xs">March 2020 - Now</div>
                   </li>
+                  <li>
+                    <div class="text-teal-600">Bachelors Degreen in LPU</div>
+                    <div class="text-gray-500 text-xs">March 2020 - Now</div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -222,21 +255,7 @@
       </div>
     </div>
   </div>
-  <!-- Edit -->
-  <div>
-    <div class="flex justify-center">
-      <button class="p-2 border w-1/4 rounded-md bg-gray-800 text-white">
-        Edit My Profile
-      </button>
-    </div>
-  </div>
 </template>
-
-<script>
-  export default {
-    name: "Profile",
-  };
-</script>
 
 <style>
   :root {

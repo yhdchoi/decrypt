@@ -25,14 +25,14 @@
             font-medium
             tracking-tight
             text-gray-900
-            hover:text-purple-500
             sm:text-4xl
           "
         >
-          DEcrypt
+          Login
         </h3>
         <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-          the world.
+          Lorem ipsum dolor sit amet consect adipisicing elit possimus magnam
+          voluptatum cupiditate veritatis in accusamus quisquam.
         </p>
       </div>
 
@@ -56,7 +56,7 @@
                   rounded-md
                   tracking-wide
                   font-regular
-                  text-sm text-yellow-500
+                  text-sm text-blue-500
                 "
               >
                 GET
@@ -64,11 +64,13 @@
               <h5
                 class="pt-1 ml-24 text-lg leading-6 font-medium text-gray-900"
               >
-                GetMapping("/")
+                Lorem Ipsum
               </h5>
             </dt>
             <dd class="mt-1 ml-24 text-base text-gray-500">
-              Annotation for mapping HTTP GET requests onto specific handler methods.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              impedit perferendis suscipit eaque, iste dolor cupiditate
+              blanditiis ratione.
             </dd>
           </div>
           <div class="relative">
@@ -92,11 +94,13 @@
               <h5
                 class="pt-1 ml-24 text-lg leading-6 font-medium text-gray-900"
               >
-                PostMapping("/new")
+                Lorem Ipsum
               </h5>
             </dt>
             <dd class="mt-1 ml-24 text-base text-gray-500">
-              Annotation for mapping HTTP POST requests onto specific handler methods.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              impedit perferendis suscipit eaque, iste dolor cupiditate
+              blanditiis ratione.
             </dd>
           </div>
           <div class="relative">
@@ -112,7 +116,7 @@
                   rounded-md
                   tracking-wide
                   font-regular
-                  text-sm text-green-500
+                  text-sm text-blue-500
                 "
               >
                 PUT
@@ -120,11 +124,13 @@
               <h5
                 class="pt-1 ml-24 text-lg leading-6 font-medium text-gray-900"
               >
-                PutMapping("/modify")
+                Lorem Ipsum
               </h5>
             </dt>
             <dd class="mt-1 ml-24 text-base text-gray-500">
-              Annotation for mapping HTTP PUT requests onto specific handler methods.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              impedit perferendis suscipit eaque, iste dolor cupiditate
+              blanditiis ratione.
             </dd>
           </div>
           <div class="relative">
@@ -140,7 +146,7 @@
                   rounded-md
                   tracking-wide
                   font-regular
-                  text-sm text-red-500
+                  text-sm text-blue-500
                 "
               >
                 DELETE
@@ -148,11 +154,13 @@
               <h5
                 class="pt-1 ml-24 text-lg leading-6 font-medium text-gray-900"
               >
-                DeleteMapping("/remove")
+                Lorem Ipsum
               </h5>
             </dt>
             <dd class="mt-1 ml-24 text-base text-gray-500">
-              Annotation for mapping HTTP DELETE requests onto specific handler methods.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+              impedit perferendis suscipit eaque, iste dolor cupiditate
+              blanditiis ratione.
             </dd>
           </div>
         </dl>
@@ -160,9 +168,3 @@
     </div>
   </div>
 </template>
-
-<script>
-  export default {
-    name: "About",
-  };
-</script>

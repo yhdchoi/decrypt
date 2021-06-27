@@ -1,8 +1,14 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import About from "../views/About.vue";
-import Browse from "../views/board/Browse.vue";
+import GetBoard from "../views/board/GetBoard.vue";
+import PostBoard from "../views/board/PostBoard.vue";
 import Contact from "../views/Contact.vue";
+import Profile from "../views/user/Profile.vue";
+import Dashboard from "../views/user/Dashboard.vue";
+import Inbox from "../views/user/Inbox.vue";
+import Friends from "../views/user/Friends.vue";
+import Settings from "../views/user/Settings.vue";
 
 
 const routes = [
@@ -18,17 +24,45 @@ const routes = [
   },
   {
     path: "/board/list",
-    name: "Browse",
-    component: Browse,
+    name: "GetBoard",
+    component: GetBoard,
+  },
+  {
+    path: "/board/post",
+    name: "PostBoard",
+    component: PostBoard,
   },
   {
     path: "/contact",
     name: "Contact",
     component: Contact,
   },
-
-
-
+  {
+    path: "/user/profile",
+    name: "Profile",
+    component: Profile,
+  },
+  {
+    path: "/user/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
+  },
+  {
+    path: "/user/inbox",
+    name: "Inbox",
+    component: Inbox,
+  },
+  {
+    path: "/user/friends",
+    name: "Friends",
+    component: Friends,
+  },
+  {
+    path: "/user/settings",
+    name: "Settings",
+    component: Settings,
+  },
+  
 
 
   // {

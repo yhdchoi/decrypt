@@ -7,7 +7,7 @@ import Contact from "../views/Contact.vue";
 import Profile from "../views/user/Profile.vue";
 import Dashboard from "../views/user/Dashboard.vue";
 import Inbox from "../views/user/Inbox.vue";
-import Friends from "../views/user/Friends.vue";
+import Connections from "../views/user/Connections.vue";
 import Settings from "../views/user/Settings.vue";
 
 
@@ -53,9 +53,9 @@ const routes = [
     component: Inbox,
   },
   {
-    path: "/user/friends",
-    name: "Friends",
-    component: Friends,
+    path: "/user/connections",
+    name: "Connections",
+    component: Connections,
   },
   {
     path: "/user/settings",

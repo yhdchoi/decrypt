@@ -207,6 +207,16 @@
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
                     <router-link
+                      :to="{ name: 'Inbox' }"
+                      :class="[
+                        active ? 'bg-gray-300' : '',
+                        'block px-4 py-2 text-sm text-gray-700',
+                      ]"
+                      >Connections</router-link
+                    >
+                  </MenuItem>
+                  <MenuItem v-slot="{ active }">
+                    <router-link
                       :to="{ name: 'Settings' }"
                       :class="[
                         active ? 'bg-gray-300' : '',

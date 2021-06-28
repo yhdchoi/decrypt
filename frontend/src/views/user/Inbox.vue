@@ -1,5 +1,7 @@
 <template>
   <div class="bg-gray-100 h-screen w-screen flex-auto inline-flex">
+    
+    <!-- List -->
     <section
       class="
         flex flex-col
@@ -26,6 +28,7 @@
       </ul>
     </section>
 
+    <!-- Read Details -->
     <section class="w-8/12 px-4 flex flex-col bg-white rounded-2xl mr-3 my-4">
       <div class="flex justify-between items-center h-48 border-b-2 mb-8">
         <div class="flex space-x-4 items-center">
@@ -107,6 +110,7 @@
           </ul>
         </div>
       </div>
+
       <section>
         <h1 class="font-bold text-2xl">Title</h1>
         <article class="mt-8 text-gray-500 leading-7 tracking-wider">

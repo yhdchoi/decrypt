@@ -257,7 +257,7 @@
   };
 </script>
 
-<style>
+<style scoped>
   :root {
     --main-color: #4a76a8;
   }

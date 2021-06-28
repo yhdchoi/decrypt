@@ -84,8 +84,7 @@
         </div>
         <div class="mb-3">
           <span class="text-green-600"
-            >This WEB Space is for storing and sharing OR 'DEcrypting' your
-            thoughts~</span
+            >The Ambiguous.</span
           >
         </div>
       </div>

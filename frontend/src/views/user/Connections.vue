@@ -3,17 +3,18 @@
 	href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
 	rel="stylesheet">
   
-<div class="flex items-center justify-center min-h-screen bg-gray-900">
+<div class="flex items-center justify-center h-auto">
 	<div class="col-span-12">
 		<div class="overflow-auto lg:overflow-visible ">
-			<table class="table text-gray-400 border-separate space-y-6 text-sm">
-				<thead class="bg-gray-800 text-gray-500">
+			<table class="table text-gray-400 border-separate space-y-6 text-base">
+				<thead class="bg-gray-800 text-gray-500 rounded-full">
 					<tr>
-						<th class="p-3">Brand</th>
+						<th class="p-3">User</th>
 						<th class="p-3 text-left">Status</th>
 						<th class="p-3 text-left">Action</th>
 					</tr>
 				</thead>
+
 				<tbody>
 					<tr class="bg-gray-800">
 						<td class="p-3">
@@ -26,12 +27,12 @@
 							</div>
 						</td>					
 						<td class="p-3">
-							<span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
+							<span class="bg-green-400 text-gray-50 rounded-md px-2">Online</span>
 						</td>
 						<td class="p-3 ">
-							<a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
+							<!-- <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
 								<i class="material-icons-outlined text-base">visibility</i>
-							</a>
+							</a> -->
 							<a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
 								<i class="material-icons-outlined text-base">edit</i>
 							</a>
@@ -40,13 +41,14 @@
 							</a>
 						</td>
 					</tr>
+
 					
 						<!-- <td class="p-3">
-							<span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
+							<span class="bg-red-400 text-gray-50 rounded-md px-2">Offline</span>
 						</td> -->
 			
 						<!-- <td class="p-3">
-							<span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
+							<span class="bg-yellow-400 text-gray-50  rounded-md px-2">Away</span>
 						</td> -->
 				
 				</tbody>

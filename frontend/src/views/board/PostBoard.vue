@@ -1,6 +1,6 @@
 <template>
   <div class="">
-    <div class="h-screen flex justify-center items-center">
+    <div class="h-full flex justify-center items-center mt-12">
       <div
         class="w-2/3 text-gray-300 rounded-t shadow-lg overflow-hidden text-xs"
       >
@@ -76,11 +76,9 @@
             </svg>
           </div>
         </div>
-        <div class="h-full p-1 bg-gray-500 font-mono">
-          <div class="my-3">
-            <span class="text-green-500">➜</span>
-            <span class="text-cyan-500">~</span>
-            <span>New Post</span>
+        <div class="h-5/6 p-1 bg-gray-500 font-mono">
+          <div class="my-3 font-bold text-sm">
+            <span>Write New</span>
           </div>
           <form action="">
             <!-- Title -->

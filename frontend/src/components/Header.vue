@@ -6,7 +6,7 @@
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-          <!-- Mobile menu button-->
+  <!-- Mobile menu button-->
           <DisclosureButton
             class="
               inline-flex
@@ -25,6 +25,7 @@
           </DisclosureButton>
         </div>
 
+<!-- Main Menu -->
         <div
           class="
             flex-1 flex
@@ -129,13 +130,13 @@
                 </div>
           </div> -->
 
-          <!-- Notification Icon  -->
+  <!-- Notification Icon  -->
           <button class="bg-gray-800 p-1 rounded-full text-gray-400">
             <span class="sr-only">View notifications</span>
             <BellIcon class="h-6 w-6 hover:text-red-500" aria-hidden="true" />
           </button>
 
-          <!-- Profile dropdown -->
+  <!-- Profile dropdown -->
           <Menu as="div" class="ml-3 relative z-10">
             <div>
               <MenuButton
@@ -160,7 +161,7 @@
               </MenuButton>
             </div>
 
-            <!-- If Logged In -->
+  <!-- If Logged In -->
             <div>
               <transition
                 enter-active-class="transition ease-out duration-100"
@@ -176,11 +177,11 @@
                     absolute
                     right-0
                     mt-5
-                    w-48
+                    w-44
                     rounded-md
                     shadow-lg
                     py-1
-                    bg-gray-100
+                    bg-gray-300
                     ring-1 ring-black ring-opacity-5
                     focus:outline-none
                   "
@@ -192,7 +193,7 @@
                         active ? 'bg-gray-300' : '',
                         'block px-4 py-2 text-sm text-gray-700',
                       ]"
-                      >Your Profile</router-link
+                      >Profile</router-link
                     >
                   </MenuItem>
                   <MenuItem v-slot="{ active }">
@@ -205,7 +206,7 @@
                       >Inbox</router-link
                     >
                   </MenuItem>
-                  <MenuItem v-slot="{ active }">
+                  <!-- <MenuItem v-slot="{ active }">
                     <router-link
                       :to="{ name: 'Connections' }"
                       :class="[
@@ -214,7 +215,7 @@
                       ]"
                       >Connections</router-link
                     >
-                  </MenuItem>
+                  </MenuItem> -->
                   <MenuItem v-slot="{ active }">
                     <router-link
                       :to="{ name: 'Settings' }"
@@ -238,10 +239,39 @@
                 </MenuItems>
               </transition>
             </div>
-
-            <!-- If Logged Out -->
-            <div></div>
           </Menu>
+
+<!-- If Logged Out -->
+            <!-- <div >
+              <router-link
+                :to="{ name: 'Signin' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-pink-500
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >SignIn</router-link
+              >
+
+              <router-link
+                :to="{ name: 'Signup' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-purple-500
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >SignUp</router-link
+              >
+            </div> -->
+
         </div>
       </div>
     </div>

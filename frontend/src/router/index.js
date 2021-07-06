@@ -9,6 +9,10 @@ import Dashboard from "../views/user/Dashboard.vue";
 import Inbox from "../views/user/Inbox.vue";
 import Connections from "../views/user/Connections.vue";
 import Settings from "../views/user/Settings.vue";
+import Signin from "../views/security/Login.vue";
+import Signup from "../views/security/Signup.vue";
+
+
 
 
 const routes = [
@@ -62,7 +66,16 @@ const routes = [
     name: "Settings",
     component: Settings,
   },
-  
+  {
+    path: "/user/signin",
+    name: "Signin",
+    component: Signin,
+  },
+  {
+    path: "/user/signup",
+    name: "Signup",
+    component: Signup,
+  },
 
 
   // {

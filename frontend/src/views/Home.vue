@@ -84,7 +84,7 @@
         </div>
         <div class="mb-3">
           <span class="text-green-600"
-            >The Ambiguous.</span
+            >the Anonymous.</span
           >
         </div>
       </div>

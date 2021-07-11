@@ -26,8 +26,8 @@ import lombok.ToString;
 @Getter
 @ToString
 public class Member {
-    
-    @Id
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false)
 	private Long mno;
@@ -38,32 +38,32 @@ public class Member {
 	private String password;
 	@Column(length = 20, nullable = false)
 	private String email;
-	
+
 	@Column(length = 20, nullable = false)
 	private String lastname;
 	@Column(length = 20, nullable = false)
 	private String firstname;
-	
+
 	@Column(length = 20, nullable = false)
 	private String phone;
-	@Column(columnDefinition = "text", nullable = false)
+	@Column(columnDefinition = "text")
 	private String address;
 	// job
 	@Column(length = 10, nullable = false)
 	private String role;
-	
-	// admin or manager or user	
+
+	// admin or manager or user
 	@Column(length = 10, nullable = false)
 	private String authority;
-	// default = true 
+	// default = true
 	@Column(nullable = false)
 	private boolean active;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:SS")
 	@CreationTimestamp
 	private LocalDateTime regDate;
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
+
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:SS")
 	@UpdateTimestamp
 	private LocalDateTime modDate;
 

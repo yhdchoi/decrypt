@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Board;
 import com.yhdc.backendapi.repository.BoardRepository;
+import com.yhdc.backendapi.repository.CommentRepository;
+import com.yhdc.backendapi.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,7 +16,10 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 
 	private final BoardRepository boardRepository;
+	private final CommentRepository commentRepository;
+	private final ReplyRepository replyRepository;
 
+	// LIST ALL
 	public List<Board> getList() {
 
 		List<Board> result = boardRepository.findAll();
@@ -22,33 +27,44 @@ public class BoardService {
 		return result;
 	}
 
-	public Board getBoard(Long bno) {
+	// GET BOARD
+	public Board getBoard(Long id) {
 
-		Board result = boardRepository.getById(bno);
+		Board result = boardRepository.getById(id);
 
 		return result;
 	}
-	
-	//TODO: get all boards for member
 
+	// GET BY MEMBER
+	public List<Board> getListWithMember(Long id) {
+
+		List<Board> result = boardRepository.getBoardWithMember(id);
+
+		return result;
+	}
+
+	// NEW Board
 	public Long register(Board board) {
 
 		boardRepository.save(board);
 
-		return board.getBno();
+		return board.getId();
 	}
 
+	// MODIFY Board
 	public Long modify(Board board) {
 
 		boardRepository.save(board);
 
-		return board.getBno();
+		return board.getId();
 	}
 
-	public String remove(Long bno) {
+	// DELETE Board
+	public String remove(Long id) {
 
-		//TODO: delete all related comments and replies
-		boardRepository.deleteById(bno);
+		// TODO: delete all related comments and replies
+		
+		boardRepository.deleteById(id);
 
 		String result = "success";
 

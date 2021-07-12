@@ -3,11 +3,15 @@ package com.yhdc.backendapi.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.yhdc.backendapi.model.Board;
-import com.yhdc.backendapi.model.Member;
 
 public interface BoardRepository extends JpaRepository<Board, Long> {
-	
-	List<Board> findByMember(Member member);
+
+	// Get all with member_id
+	@Query("SELECT b, m FROM Board b LEFT JOIN b.member m WHERE m.id = :id")
+	List<Board> getBoardWithMember(@Param("id") Long id);
+
 }

@@ -15,6 +15,7 @@ public class MemberService {
 
 	private final MemberRepository memberRepository;
 
+	// GET
 	public List<Member> getList() {
 
 		List<Member> result = memberRepository.findAll();
@@ -22,38 +23,41 @@ public class MemberService {
 		return result;
 	}
 
-	public Member getMember(Long mno) {
+	// GET
+	public Member getMember(Long id) {
 
-		Member result = memberRepository.getById(mno);
+		Member result = memberRepository.getById(id);
 
 		return result;
 	}
-	
-	
 
+	// POST
 	public Long register(Member member) {
 
 		memberRepository.save(member);
 
-		return member.getMno();
+		return member.getId();
 	}
 
+	// MODIFY
 	public Long modify(Member member) {
 
 		memberRepository.save(member);
 
-		return member.getMno();
+		return member.getId();
 	}
-	
-	//TODO: password reset
 
-	public String remove(Long mno) {
+	// DELETE
+	public String remove(Long id) {
+
+		// TODO: delete all related boards, comments, replies
 		
-		//TODO: delete all related boards, comments, replies
-		memberRepository.deleteById(mno);
+		memberRepository.deleteById(id);
 
 		String result = "successs";
 
 		return result;
 	}
+
+	// TODO: password reset
 }

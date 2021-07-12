@@ -35,10 +35,10 @@ public class CommentController {
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}
 
-	@GetMapping("/{cno}")
-	public ResponseEntity<Comment> getComment(@PathVariable Long cno) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Comment> getComment(@PathVariable Long id) {
 
-		Comment result = commentService.getComment(cno);
+		Comment result = commentService.getComment(id);
 
 		return new ResponseEntity<Comment>(result, HttpStatus.OK);
 	}
@@ -66,12 +66,12 @@ public class CommentController {
 		return new ResponseEntity<Long>(result, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/remove/{cno}")
-	public ResponseEntity<String> remove(@PathVariable Long cno) {
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<String> remove(@PathVariable Long id) {
 
-		log.info(cno);
+		log.info(id);
 		
-		String result = commentService.remove(cno);
+		String result = commentService.remove(id);
 
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}

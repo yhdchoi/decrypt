@@ -1,13 +1,9 @@
 package com.yhdc.backendapi.repotest;
 
-import java.util.stream.IntStream;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.yhdc.backendapi.model.Comment;
-import com.yhdc.backendapi.model.Reply;
 import com.yhdc.backendapi.repository.ReplyRepository;
 
 @SpringBootTest
@@ -16,19 +12,37 @@ public class ReplyRepoTest {
 	@Autowired
 	private ReplyRepository replyRepository;
 
+//	@Test
+//	public void insert() {
+//		IntStream.rangeClosed(1, 200).forEach(i -> {
+//
+//			Long id = (long) (Math.random() * 100) + 1;
+//			Long no = (long) (Math.random() * 200) + 1;
+//
+//			Member member = Member.builder().id(id).build();
+//
+//			Comment comment = Comment.builder().id(no).build();
+//
+//			Reply reply = Reply.builder().member(member).comment(comment).content("Reply content..." + i).privacy(false)
+//					.build();
+//
+//			replyRepository.save(reply);
+//		});
+//	}
+
+//	@Test
+//	public void testGetWithMember() {
+//		
+//		List<Reply> result = replyRepository.getReplyWithMember(3L);
+//		
+//		System.out.println(result);
+//	}
+
 	@Test
-	public void insert() {
-		IntStream.rangeClosed(1, 200).forEach(i -> {
+	public void testDeleteWithMember() {
 
-			Long no = (long) (Math.random() * 100) + 1;
+		replyRepository.deleteReplyWithMember(3L);
 
-			Comment comment = Comment.builder().cno(no).build();
-
-			Reply reply = Reply.builder().writer("User" + i).content(
-					"Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti repudiandae quae praesentium architecto tempora suscipit nesciunt sunt hic optio vitae.")
-					.privacy(false).comment(comment).build();
-
-			replyRepository.save(reply);
-		});
+		System.out.println(replyRepository.getReplyWithMember(3L));
 	}
 }

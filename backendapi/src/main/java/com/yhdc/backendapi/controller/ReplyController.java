@@ -35,12 +35,12 @@ public class ReplyController {
 		return new ResponseEntity<List<Reply>>(result, HttpStatus.OK);
 	}
 
-	@GetMapping("/{rno}")
-	public ResponseEntity<Reply> getReply(@PathVariable Long rno) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Reply> getReply(@PathVariable Long id) {
 
-		log.info(rno);
+		log.info(id);
 
-		Reply result = replyService.getReply(rno);
+		Reply result = replyService.getReply(id);
 
 		return new ResponseEntity<Reply>(result, HttpStatus.OK);
 	}
@@ -69,12 +69,12 @@ public class ReplyController {
 		return new ResponseEntity<Long>(result, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/remove/{rno}")
-	public ResponseEntity<String> remove(@PathVariable Long rno) {
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<String> remove(@PathVariable Long id) {
 
-		log.info(rno);
+		log.info(id);
 
-		String result = replyService.remove(rno);
+		String result = replyService.remove(id);
 
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}

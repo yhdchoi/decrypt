@@ -37,14 +37,25 @@ public class BoardController {
 	}
 
 // GET BOARD
-	@GetMapping("/{bno}")
-	public ResponseEntity<Board> getBoard(@PathVariable("bno") Long bno) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Board> getBoard(@PathVariable("id") Long id) {
 
-		log.info(bno);
+		log.info(id);
 
-		Board result = boardService.getBoard(bno);
+		Board result = boardService.getBoard(id);
 
 		return new ResponseEntity<Board>(result, HttpStatus.OK);
+	}
+	
+// GET ALL WITH MEMBER_ID
+	@GetMapping("/list/{id}")
+	public ResponseEntity<List<Board>> getListWithMember(@PathVariable("id") Long id){
+		
+		log.info(id);
+		
+		List<Board> result = boardService.getListWithMember(id);
+		
+		return new ResponseEntity<List<Board>>(result, HttpStatus.OK);
 	}
 
 // POST NEW
@@ -59,7 +70,7 @@ public class BoardController {
 	}
 
 // MODIFY BOARD
-	@PutMapping("/modify/{bno}")
+	@PutMapping("/modify/{id}")
 	public ResponseEntity<Long> modify(@RequestBody Board board) {
 
 		log.info(board);
@@ -70,12 +81,12 @@ public class BoardController {
 	}
 
 // DELETE
-	@DeleteMapping("/remove/{bno}")
-	public ResponseEntity<String> remove(@PathVariable Long bno) {
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<String> remove(@PathVariable Long id) {
 
-		log.info(bno);
+		log.info(id);
 
-		String result = boardService.remove(bno);
+		String result = boardService.remove(id);
 
 		return new ResponseEntity<>(result, HttpStatus.OK);
 	}

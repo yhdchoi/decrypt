@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -30,17 +31,20 @@ public class Board {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long bno;
+	private Long id;
+
+	@ManyToOne(targetEntity = Member.class)
+	@JoinColumn(name = "member_id", referencedColumnName = "ID")
+	private Member member;
 
 	@Column(length = 50)
 	private String title;
+
 	@Column(columnDefinition = "text")
 	private String content;
+
 	@Column(nullable = false)
 	private boolean privacy;
-
-	@ManyToOne
-	private Member member;
 
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:SS")
 	@CreationTimestamp()
@@ -58,4 +62,7 @@ public class Board {
 		this.content = content;
 	}
 
+	public void changePrivacy(boolean privacy) {
+		this.privacy = privacy;
+	}
 }

@@ -35,12 +35,12 @@ public class MemberController {
 		return new ResponseEntity<List<Member>>(result, HttpStatus.OK);
 	}
 
-	@GetMapping("/{mno}")
-	public ResponseEntity<Member> getMember(@PathVariable Long mno) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Member> getMember(@PathVariable Long id) {
 
-		log.info(mno);
+		log.info(id);
 
-		Member result = memberService.getMember(mno);
+		Member result = memberService.getMember(id);
 
 		return new ResponseEntity<Member>(result, HttpStatus.OK);
 	}
@@ -55,7 +55,7 @@ public class MemberController {
 		return new ResponseEntity<Long>(result, HttpStatus.OK);
 	}
 
-	@PutMapping("/modify/{mno}")
+	@PutMapping("/modify/{id}")
 	public ResponseEntity<Long> modify(@RequestBody Member member) {
 
 		log.info(member);
@@ -65,12 +65,12 @@ public class MemberController {
 		return new ResponseEntity<Long>(result, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/remove/{mno}")
-	public ResponseEntity<String> remove(@PathVariable Long mno) {
+	@DeleteMapping("/remove/{id}")
+	public ResponseEntity<String> remove(@PathVariable Long id) {
 
-		log.info(mno);
+		log.info(id);
 
-		String result = memberService.remove(mno);
+		String result = memberService.remove(id);
 
 		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}

@@ -15,6 +15,7 @@ public class ReplyService {
 
 	private final ReplyRepository replyRepository;
 
+	// LIST
 	public List<Reply> getList() {
 
 		List<Reply> result = replyRepository.findAll();
@@ -22,46 +23,61 @@ public class ReplyService {
 		return result;
 	}
 
-	public Reply getReply(Long rno) {
+	// GET
+	public Reply getReply(Long id) {
 
-		Reply result = replyRepository.getById(rno);
+		Reply result = replyRepository.getById(id);
 
 		return result;
 	}
-	
-	
-//TODO: get replies for comment	
-//	public List<Reply> getReplyByBno(Long cno) {
-//		
-//		List<Reply> result = replyRepository.findRepliesByCno(cno);
-//		
-//		return result;
-//	}
 
+	// GET with MemberID
+	public List<Reply> getRepliesWithMember(Long id) {
+
+		List<Reply> result = replyRepository.getReplyWithMember(id);
+
+		return result;
+	}
+
+	// GET With ReplyID
+	public List<Reply> getRepliesWithComment(Long id) {
+
+		List<Reply> result = replyRepository.getReplyWithComment(id);
+
+		return result;
+	}
+
+	// POST
 	public Long register(Reply reply) {
 
 		replyRepository.save(reply);
 
-		Long result = reply.getRno();
+		Long result = reply.getId();
 
 		return result;
 	}
 
+	// PUT
 	public Long modify(Reply reply) {
 
 		replyRepository.save(reply);
 
-		Long result = reply.getRno();
+		Long result = reply.getId();
 
 		return result;
 	}
 
-	public String remove(Long rno) {
+	// DELETE
+	public String remove(Long id) {
 
-		replyRepository.deleteById(rno);
+		replyRepository.deleteById(id);
 
 		String result = "success";
 
 		return result;
 	}
+	
+	//TODO DELETE All With MemberID
+	
+	//TODO DELETE All With CommentID
 }

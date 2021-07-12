@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Comment;
 import com.yhdc.backendapi.repository.CommentRepository;
-import com.yhdc.backendapi.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 

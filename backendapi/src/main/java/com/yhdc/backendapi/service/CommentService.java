@@ -2,11 +2,12 @@ package com.yhdc.backendapi.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Comment;
 import com.yhdc.backendapi.repository.CommentRepository;
-import com.yhdc.backendapi.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -15,7 +16,6 @@ import lombok.RequiredArgsConstructor;
 public class CommentService {
 
 	private final CommentRepository commentRepository;
-	private final ReplyRepository replyRepository;
 
 	// GET List
 	public List<Comment> getList() {
@@ -29,14 +29,6 @@ public class CommentService {
 	public Comment getComment(Long id) {
 
 		Comment result = commentRepository.getById(id);
-
-		return result;
-	}
-
-	// Get By Member
-	public List<Comment> getCommentsWithMember(Long id) {
-
-		List<Comment> result = commentRepository.getCommentWithMember(id);
 
 		return result;
 	}
@@ -58,6 +50,7 @@ public class CommentService {
 	}
 
 	// MODIFY
+	@Transactional
 	public Long modify(Comment comment) {
 
 		commentRepository.save(comment);
@@ -66,10 +59,10 @@ public class CommentService {
 	}
 
 	// DELETE
+	@Transactional
 	public String remove(Long id) {
 
-		// TODO: delete all related replies
-		
+		//TODO delete all related replies
 		commentRepository.deleteById(id);
 
 		String result = "success";

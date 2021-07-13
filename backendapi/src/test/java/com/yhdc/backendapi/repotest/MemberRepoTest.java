@@ -17,16 +17,14 @@ public class MemberRepoTest {
 
 	@Test
 	public void insert() {
-
-		IntStream.rangeClosed(1, 100).forEach(i -> {
+		IntStream.rangeClosed(1, 10).forEach(i -> {
 
 			Member member = Member.builder().username("USER" + i).password("password" + i)
 					.email("user" + i + "@aaa.com").lastname("lastname" + i).firstname("Firstname" + i)
-					.phone("1231231234").address("Abc St. Toronto Canada").role("Developer").authority("User")
+					.phone("1231231234").address("Abc St. Toronto Canada").role("developer").authority("user")
 					.active(true).build();
 
 			memberRepository.save(member);
 		});
-
 	}
 }

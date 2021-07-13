@@ -31,14 +31,6 @@ public class ReplyService {
 		return result;
 	}
 
-	// GET with MemberID
-	public List<Reply> getRepliesWithMember(Long id) {
-
-		List<Reply> result = replyRepository.getReplyWithMember(id);
-
-		return result;
-	}
-
 	// GET With ReplyID
 	public List<Reply> getRepliesWithComment(Long id) {
 
@@ -48,6 +40,7 @@ public class ReplyService {
 	}
 
 	// POST
+
 	public Long register(Reply reply) {
 
 		replyRepository.save(reply);
@@ -76,8 +69,5 @@ public class ReplyService {
 
 		return result;
 	}
-	
-	//TODO DELETE All With MemberID
-	
-	//TODO DELETE All With CommentID
+
 }

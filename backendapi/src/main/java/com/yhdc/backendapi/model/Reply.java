@@ -4,10 +4,10 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -28,20 +28,19 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = { "comment", "member" })
+@ToString(exclude = "comment")
 public class Reply {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(targetEntity = Member.class)
-	@JoinColumn(name = "member_id", referencedColumnName = "ID")
-	private Member member;
-
-	@ManyToOne(targetEntity = Comment.class)
-	@JoinColumn(name = "comment_id", referencedColumnName = "ID")
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Comment comment;
+	
+	@Column(length = 50)
+	private String writer;
 
 	@Column(columnDefinition = "text")
 	private String content;
@@ -56,12 +55,4 @@ public class Reply {
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:SS")
 	@UpdateTimestamp
 	private LocalDateTime modDate;
-
-	public void changeContent(String content) {
-		this.content = content;
-	}
-
-	public void changePrivacy(boolean privacy) {
-		this.privacy = privacy;
-	}
 }

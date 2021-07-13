@@ -2,6 +2,8 @@ package com.yhdc.backendapi.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Member;
@@ -48,9 +50,10 @@ public class MemberService {
 	}
 
 	// DELETE
+	@Transactional
 	public String remove(Long id) {
 
-		// TODO: delete all related boards, comments, replies
+		//TODO delete all related boards, comments, replies
 		
 		memberRepository.deleteById(id);
 

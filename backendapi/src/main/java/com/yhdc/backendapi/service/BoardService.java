@@ -2,12 +2,12 @@ package com.yhdc.backendapi.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Board;
 import com.yhdc.backendapi.repository.BoardRepository;
-import com.yhdc.backendapi.repository.CommentRepository;
-import com.yhdc.backendapi.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -16,8 +16,6 @@ import lombok.RequiredArgsConstructor;
 public class BoardService {
 
 	private final BoardRepository boardRepository;
-	private final CommentRepository commentRepository;
-	private final ReplyRepository replyRepository;
 
 	// LIST ALL
 	public List<Board> getList() {
@@ -52,6 +50,7 @@ public class BoardService {
 	}
 
 	// MODIFY Board
+	@Transactional
 	public Long modify(Board board) {
 
 		boardRepository.save(board);
@@ -60,10 +59,10 @@ public class BoardService {
 	}
 
 	// DELETE Board
+	@Transactional
 	public String remove(Long id) {
 
-		// TODO: delete all related comments and replies
-		
+		// TODO delete all related comments and replies
 		boardRepository.deleteById(id);
 
 		String result = "success";

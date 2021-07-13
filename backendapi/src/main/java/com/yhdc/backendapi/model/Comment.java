@@ -1,14 +1,17 @@
 package com.yhdc.backendapi.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -28,20 +31,23 @@ import lombok.ToString;
 @NoArgsConstructor
 @Getter
 @Setter
-@ToString(exclude = { "board", "member" })
+@ToString(exclude = "board")
 public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@ManyToOne(targetEntity = Member.class)
-	@JoinColumn(name = "member_id", referencedColumnName = "ID")
-	private Member member;
-
-	@ManyToOne(targetEntity = Board.class)
-	@JoinColumn(name = "board_id", referencedColumnName = "ID")
+	
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Board board;
+	
+	
+	@OneToMany(mappedBy = "comment", cascade = CascadeType.ALL,orphanRemoval = true)
+	private List<Reply> replies;
+
+	@Column(length = 50)
+	private String writer;
 
 	@Column(columnDefinition = "text")
 	private String content;

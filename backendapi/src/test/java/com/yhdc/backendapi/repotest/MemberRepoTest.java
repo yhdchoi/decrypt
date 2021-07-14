@@ -21,8 +21,7 @@ public class MemberRepoTest {
 
 			Member member = Member.builder().username("USER" + i).password("password" + i)
 					.email("user" + i + "@aaa.com").lastname("lastname" + i).firstname("Firstname" + i)
-					.phone("1231231234").address("Abc St. Toronto Canada").role("developer").authority("user")
-					.active(true).build();
+					.phone("1231231234").address("Abc St. Toronto Canada").role("developer").active(true).build();
 
 			memberRepository.save(member);
 		});

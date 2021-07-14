@@ -1,7 +1,5 @@
 package com.yhdc.backendapi.servtest;
 
-import javax.transaction.Transactional;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,18 +12,26 @@ public class MemberServTest {
 
 	@Autowired
 	private MemberService memberService;
-	
-	@Transactional
+
 	@Test
-	public void deleteMember() {
-		
+	public void getMember() {
+
 		Member member = memberService.getMember(9L);
-		
+
 		System.out.println(member);
-		
-		String result = memberService.remove(9L);
-		
-		System.out.println(result);
 	}
-	
+
+//	@Transactional
+//	@Test
+//	public void deleteMember() {
+//
+//		Member member = memberService.getMember(9L);
+//
+//		System.out.println(member);
+//
+//		String result = memberService.remove(9L);
+//
+//		System.out.println(result);
+//	}
+
 }

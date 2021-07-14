@@ -20,6 +20,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 @Entity
@@ -27,16 +28,17 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-@ToString
+@Setter
+@ToString(exclude = "boards")
 public class Member {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(updatable = false)
 	private Long id;
-	
+
 	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<Board> boards;
+	List<Board> boards;
 
 	@Column(length = 20, nullable = false)
 	private String username;
@@ -58,9 +60,6 @@ public class Member {
 	@Column(length = 10, nullable = false)
 	private String role;
 
-	// admin or manager or user
-	@Column(length = 10, nullable = false)
-	private String authority;
 	// default = true
 	@Column(nullable = false)
 	private boolean active;

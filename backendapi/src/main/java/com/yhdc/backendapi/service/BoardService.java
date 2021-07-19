@@ -1,9 +1,8 @@
 package com.yhdc.backendapi.service;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Board;
@@ -17,57 +16,47 @@ public class BoardService {
 
 	private final BoardRepository boardRepository;
 
-	// LIST ALL
-	public List<Board> getList() {
+	// Search List
+	public Page<Board> boardSearchList(String title, String content, Pageable pageable) {
+		Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
 
-		List<Board> result = boardRepository.findAll();
-
-		return result;
+		return boards;
 	}
 
-	// GET BOARD
-	public Board getBoard(Long id) {
-
-		Board result = boardRepository.getById(id);
-
-		return result;
+	// Detail
+	public Board read(Long id) {
+		Board board = boardRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE BOARD DOES NOT EXIST.");
+		});
+		return board;
 	}
 
-	// GET BY MEMBER
-	public List<Board> getListWithMember(Long id) {
+	// New Board
+	public Board registerBoard(Board newBoard) {
+		Board board = boardRepository.save(newBoard);
 
-		List<Board> result = boardRepository.getBoardWithMember(id);
-
-		return result;
+		return board;
 	}
 
-	// NEW Board
-	public Long register(Board board) {
+	// Update Board
+	public Board updateBoard(Long id, Board newBoard) {
+		Board board = boardRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE BOARD DOES NOT EXIST.");
+		});
 
-		boardRepository.save(board);
+		board.setTitle(newBoard.getTitle());
+		board.setContent(newBoard.getContent());
 
-		return board.getId();
+		return board;
 	}
 
-	// MODIFY Board
-	@Transactional
-	public Long modify(Board board) {
-
-		boardRepository.save(board);
-
-		return board.getId();
+	// Delete Board
+	public String deleteBoard(Long id) {
+		try {
+			boardRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return "THE BOARD DOES NOT EXIST.";
+		}
+		return "DELETED";
 	}
-
-	// DELETE Board
-	@Transactional
-	public String remove(Long id) {
-
-		// TODO delete all related comments and replies
-		boardRepository.deleteById(id);
-
-		String result = "success";
-
-		return result;
-	}
-
 }

@@ -1,9 +1,10 @@
 package com.yhdc.backendapi.service;
 
-import java.util.List;
-
-import javax.transaction.Transactional;
-
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 
 import com.yhdc.backendapi.model.Comment;
@@ -17,56 +18,46 @@ public class CommentService {
 
 	private final CommentRepository commentRepository;
 
-	// GET List
-	public List<Comment> getList() {
+	// Search List
+	public Page<Comment> boardSearchList(String content,
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+		Page<Comment> comments = commentRepository.findByContentContaining(content, pageable);
 
-		List<Comment> result = commentRepository.findAll();
-
-		return result;
+		return comments;
 	}
 
-	// GET Comment
-	public Comment getComment(Long id) {
-
-		Comment result = commentRepository.getById(id);
-
-		return result;
+	// Detail
+	public Comment read(Long id) {
+		Comment comment = commentRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE COMMENT DOES NOT EXIST.");
+		});
+		return comment;
 	}
 
-	// GET By Board
-	public List<Comment> getCommentsWithBoard(Long id) {
+	// New Comment
+	public Comment registerBoard(Comment newComment) {
+		Comment comment = commentRepository.save(newComment);
 
-		List<Comment> result = commentRepository.getCommentWithBoard(id);
-
-		return result;
+		return comment;
 	}
 
-	// POST
-	public Long register(Comment comment) {
+	// Update Comment
+	public Comment updateBoard(Long id, Comment newComment) {
+		Comment comment = commentRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE COMMENT DOES NOT EXIST.");
+		});
+		comment.setContent(newComment.getContent());
 
-		commentRepository.save(comment);
-
-		return comment.getId();
+		return comment;
 	}
 
-	// MODIFY
-	@Transactional
-	public Long modify(Comment comment) {
-
-		commentRepository.save(comment);
-
-		return comment.getId();
-	}
-
-	// DELETE
-	@Transactional
-	public String remove(Long id) {
-
-		//TODO delete all related replies
-		commentRepository.deleteById(id);
-
-		String result = "success";
-
-		return result;
+	// Delete Comment
+	public String deleteComment(Long id) {
+		try {
+			commentRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return "THE COMMENT DOES NOT EXIST.";
+		}
+		return "DELETED";
 	}
 }

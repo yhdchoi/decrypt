@@ -1,21 +1,15 @@
 package com.yhdc.backendapi.model;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -31,32 +25,29 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class Board {
+public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(updatable = false)
 	private Long id;
 
-	@Column(length = 100)
-	private String title;
+	@Column(length = 20, unique = true)
+	private String username;
 
-	@Column(columnDefinition = "text")
-	private String content;
-	
-	@ColumnDefault("0")
-	private int count;
+	@Column(length = 20, unique = true)
+	private String email;
+
+	@Column(length = 100)
+	private String password;
 
 	@Enumerated(EnumType.STRING)
-	private PrivacyType privacy;
+	private RoleType role;
 
-	@ManyToOne
-	@JoinColumn(name = "userId")
-	private User user;
+	@Enumerated(EnumType.STRING)
+	private EnableType enable;
 
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
-	private List<Comment> comments;
-
-	@CreationTimestamp()
+	@CreationTimestamp
 	private Timestamp regDate;
 
 	@UpdateTimestamp

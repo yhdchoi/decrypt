@@ -1,7 +1,13 @@
 package com.yhdc.backendapi.controller;
 
-import java.util.List;
+import javax.transaction.Transactional;
+import javax.validation.Valid;
 
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -11,72 +17,71 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.yhdc.backendapi.model.Reply;
-import com.yhdc.backendapi.service.ReplyService;
+import com.yhdc.backendapi.repository.ReplyRepository;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 @RestController
 @RequestMapping("/reply/")
 @RequiredArgsConstructor
-@Log4j2
 public class ReplyController {
 
-	private final ReplyService replyService;
+	private final ReplyRepository replyRepository;
 
+	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<List<Reply>> getList() {
+	public ResponseEntity<Page<Reply>> replySearchList(@RequestParam String content,
+			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+		Page<Reply> replies = replyRepository.findByContentContaining(content, pageable);
 
-		List<Reply> result = replyService.getList();
-
-		return new ResponseEntity<List<Reply>>(result, HttpStatus.OK);
+		return new ResponseEntity<Page<Reply>>(replies, HttpStatus.OK);
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Reply> getReply(@PathVariable Long id) {
+	// Detail
+	@GetMapping("/read/{id}")
+	public ResponseEntity<Reply> read(@PathVariable Long id) {
+		Reply reply = replyRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE COMMENT DOES NOT EXIST.");
+		});
 
-		log.info(id);
-
-		Reply result = replyService.getReply(id);
-
-		return new ResponseEntity<Reply>(result, HttpStatus.OK);
-	}
-	
-// TODO: GET REPLIES FOR BOARD
-	
-	
-
-	@PostMapping("/new")
-	public ResponseEntity<Long> register(@RequestBody Reply reply) {
-
-		log.info(reply);
-
-		Long result = replyService.register(reply);
-
-		return new ResponseEntity<Long>(result, HttpStatus.OK);
+		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
 	}
 
-	@PutMapping("/modify")
-	public ResponseEntity<Long> modify(@RequestBody Reply reply) {
+	// New Comment
+	@PostMapping("/register")
+	public ResponseEntity<Reply> registerReply(@Valid @RequestBody Reply newReply) {
+		Reply reply = replyRepository.save(newReply);
 
-		log.info(reply);
-
-		Long result = replyService.modify(reply);
-
-		return new ResponseEntity<Long>(result, HttpStatus.OK);
+		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
 	}
 
-	@DeleteMapping("/remove/{id}")
-	public ResponseEntity<String> remove(@PathVariable Long id) {
+	// Update Comment
+	@Transactional
+	@PutMapping("/update/{id}")
+	public ResponseEntity<Reply> updateReply(@PathVariable Long id, @Valid @RequestBody Reply newReply) {
+		Reply reply = replyRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("THE REPLY DOES NOT EXIST.");
+		});
 
-		log.info(id);
+		reply.setContent(newReply.getContent());
 
-		String result = replyService.remove(id);
+		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
+	}
 
-		return new ResponseEntity<String>(result, HttpStatus.OK);
+	// Delete Comment
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<String> deleteReply(@PathVariable Long id) {
+		try {
+			replyRepository.deleteById(id);
+		} catch (EmptyResultDataAccessException e) {
+			return new ResponseEntity<String>("THE REPLY DOES NOT EXIST.", HttpStatus.NOT_FOUND);
+		}
+
+		return new ResponseEntity<String>("DELETED", HttpStatus.OK);
 	}
 
 }

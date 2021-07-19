@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.yhdc.backendapi.model.Comment;
+import com.yhdc.backendapi.model.PrivacyType;
 import com.yhdc.backendapi.model.Reply;
 import com.yhdc.backendapi.repository.ReplyRepository;
 
@@ -21,9 +22,8 @@ public class ReplyRepoTest {
 		IntStream.rangeClosed(1, 10).forEach(i -> {
 			Long id = (long) (Math.random() * 10) + 1;
 			Comment comment = Comment.builder().id(id).build();
-			
-			Reply reply = Reply.builder().comment(comment).writer("User..." + i).content("Reply content..." + i)
-					.privacy(false).build();
+
+			Reply reply = Reply.builder().content("Reply content..." + i).privacy(PrivacyType.PUBLIC).build();
 
 			replyRepository.save(reply);
 		});

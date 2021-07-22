@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.yhdc.backendapi.model.Comment;
-import com.yhdc.backendapi.model.PrivacyType;
 import com.yhdc.backendapi.model.Reply;
+import com.yhdc.backendapi.model.enums.PrivacyType;
 import com.yhdc.backendapi.repository.ReplyRepository;
 
 @SpringBootTest

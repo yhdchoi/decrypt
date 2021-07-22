@@ -13,6 +13,9 @@ import javax.persistence.Id;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.yhdc.backendapi.model.enums.EnableType;
+import com.yhdc.backendapi.model.enums.RoleType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

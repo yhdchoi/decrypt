@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.yhdc.backendapi.model.Board;
 import com.yhdc.backendapi.model.Comment;
-import com.yhdc.backendapi.model.PrivacyType;
+import com.yhdc.backendapi.model.enums.PrivacyType;
 import com.yhdc.backendapi.repository.CommentRepository;
 
 @SpringBootTest

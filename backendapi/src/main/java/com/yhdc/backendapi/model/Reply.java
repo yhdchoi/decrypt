@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.yhdc.backendapi.model.enums.PrivacyType;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,13 +37,17 @@ public class Reply {
 
 	@Column(columnDefinition = "text")
 	private String content;
-	
+
 	@Enumerated(EnumType.STRING)
 	private PrivacyType privacy;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
+
+	@ManyToOne
+	@JoinColumn(name = "commentId")
+	private Comment comment;
 
 	@CreationTimestamp
 	private Timestamp regDate;

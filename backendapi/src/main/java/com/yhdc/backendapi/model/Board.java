@@ -3,6 +3,7 @@ package com.yhdc.backendapi.model;
 import java.sql.Timestamp;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,6 +19,9 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.yhdc.backendapi.model.enums.PrivacyType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -42,7 +46,7 @@ public class Board {
 
 	@Column(columnDefinition = "text")
 	private String content;
-	
+
 	@ColumnDefault("0")
 	private int count;
 
@@ -53,7 +57,8 @@ public class Board {
 	@JoinColumn(name = "userId")
 	private User user;
 
-	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties({ "board" })
 	private List<Comment> comments;
 
 	@CreationTimestamp()

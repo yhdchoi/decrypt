@@ -1,7 +1,5 @@
 package com.yhdc.backendapi.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,17 +28,17 @@ public class AuthController {
 		return new ResponseEntity<Integer>(1, HttpStatus.OK);
 	}
 
-	// Login
-	@PostMapping("/login")
-	public ResponseEntity<Integer> login(@RequestBody User user, HttpSession session) {
-
-		User principal = userService.loginUser(user);
-		
-		if(principal != null) {
-			session.setAttribute("principla", principal);
-		}
-
-		return new ResponseEntity<Integer>(1, HttpStatus.OK);
-	}
+	// Form Login
+//	@PostMapping("/login")
+//	public ResponseEntity<Integer> login(@RequestBody User user, HttpSession session) {
+//
+//		User principal = userService.loginUser(user);
+//		
+//		if(principal != null) {
+//			session.setAttribute("principla", principal);
+//		}
+//
+//		return new ResponseEntity<Integer>(1, HttpStatus.OK);
+//	}
 
 }

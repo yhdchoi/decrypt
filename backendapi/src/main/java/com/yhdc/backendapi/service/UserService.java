@@ -8,9 +8,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.yhdc.backendapi.model.EnableType;
-import com.yhdc.backendapi.model.RoleType;
 import com.yhdc.backendapi.model.User;
+import com.yhdc.backendapi.model.enums.EnableType;
+import com.yhdc.backendapi.model.enums.RoleType;
 import com.yhdc.backendapi.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;

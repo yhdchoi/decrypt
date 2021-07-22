@@ -1,6 +1,7 @@
 package com.yhdc.backendapi.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -16,9 +17,19 @@ public class HomeController {
 		return "/home/about";
 	}
 
-	@RequestMapping("/contact")
+	@GetMapping("/contact")
 	public String contact() {
 		return "/home/contact";
+	}
+	
+	@GetMapping("/auth/join")
+	public String join() {
+		return "/home/join";
+	}
+	
+	@GetMapping("/auth/login")
+	public String login() {
+		return "/home/login";
 	}
 	
 }

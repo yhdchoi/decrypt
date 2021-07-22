@@ -6,9 +6,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.yhdc.backendapi.model.EnableType;
-import com.yhdc.backendapi.model.RoleType;
 import com.yhdc.backendapi.model.User;
+import com.yhdc.backendapi.model.enums.EnableType;
+import com.yhdc.backendapi.model.enums.RoleType;
 import com.yhdc.backendapi.repository.UserRepository;
 
 @SpringBootTest

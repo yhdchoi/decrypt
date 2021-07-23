@@ -1,8 +1,8 @@
-package com.yhdc.backendapi.dto;
+package com.yhdc.backendapi.dto.page;
 
 import org.springframework.data.domain.Page;
 
-import com.yhdc.backendapi.model.Reply;
+import com.yhdc.backendapi.model.Board;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ReplyPageDto<T> {
+public class BoardPageDto<T> {
 
-	private Page<Reply> replies;
+	private Page<Board> boards;
 	private int startPage;
 	private int endPage;
 }

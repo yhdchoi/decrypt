@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -45,9 +46,11 @@ public class User {
 	private String password;
 
 	@Enumerated(EnumType.STRING)
+	@ColumnDefault("USER")
 	private RoleType role;
 
 	@Enumerated(EnumType.STRING)
+	@ColumnDefault("ENABLE")
 	private EnableType enable;
 
 	@CreationTimestamp

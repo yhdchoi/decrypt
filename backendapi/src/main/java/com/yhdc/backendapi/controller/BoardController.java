@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yhdc.backendapi.dto.BoardPageDto;
+import com.yhdc.backendapi.dto.page.BoardPageDto;
 import com.yhdc.backendapi.model.Board;
 import com.yhdc.backendapi.service.BoardService;
 import com.yhdc.backendapi.utils.Utilities;

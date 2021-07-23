@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yhdc.backendapi.dto.CommentPageDto;
+import com.yhdc.backendapi.dto.page.CommentPageDto;
 import com.yhdc.backendapi.model.Comment;
 import com.yhdc.backendapi.repository.CommentRepository;
 import com.yhdc.backendapi.utils.Utilities;

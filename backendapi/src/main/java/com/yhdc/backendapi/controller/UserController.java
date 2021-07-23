@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.yhdc.backendapi.dto.UserPageDto;
+import com.yhdc.backendapi.dto.page.UserPageDto;
 import com.yhdc.backendapi.model.User;
 import com.yhdc.backendapi.service.UserService;
 import com.yhdc.backendapi.utils.Utilities;

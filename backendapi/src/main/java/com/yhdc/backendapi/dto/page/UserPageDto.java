@@ -1,8 +1,8 @@
-package com.yhdc.backendapi.dto;
+package com.yhdc.backendapi.dto.page;
 
 import org.springframework.data.domain.Page;
 
-import com.yhdc.backendapi.model.Board;
+import com.yhdc.backendapi.model.User;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,9 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BoardPageDto<T> {
+public class UserPageDto<T> {
 
-	private Page<Board> boards;
+	private Page<User> users;
 	private int startPage;
 	private int endPage;
 }

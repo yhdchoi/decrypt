@@ -14,7 +14,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.yhdc.backendapi.model.enums.EnableType;
+import com.yhdc.backendapi.model.enums.StatusType;
+import com.yhdc.backendapi.model.enums.GenderType;
 import com.yhdc.backendapi.model.enums.RoleType;
 
 import lombok.AllArgsConstructor;
@@ -44,14 +45,30 @@ public class User {
 
 	@Column(length = 100)
 	private String password;
+	
+	@Column(length = 20)
+	private String firstname;
+	
+	@Column(length = 20)
+	private String lastname;
+	
+	@Column(length = 30)
+	private String phone;
+	
+	@Column(columnDefinition = "text")
+	private String intro;
+	
+	@Enumerated(EnumType.STRING)
+	@ColumnDefault("EMPTY")
+	private GenderType gender;
 
 	@Enumerated(EnumType.STRING)
 	@ColumnDefault("USER")
 	private RoleType role;
 
 	@Enumerated(EnumType.STRING)
-	@ColumnDefault("ENABLE")
-	private EnableType enable;
+	@ColumnDefault("ACTIVE")
+	private StatusType status;
 
 	@CreationTimestamp
 	private Timestamp regDate;

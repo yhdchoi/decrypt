@@ -254,7 +254,7 @@
                   text-sm
                   font-medium
                 "
-                >SignIn</router-link
+                >Login</router-link
               >
 
               <router-link

@@ -1,5 +1,5 @@
 package com.yhdc.backendapi.model.enums;
 
-public enum EnableType {
-	ENABLE, DISABLE
+public enum StatusType {
+	ACTIVE, INACTIVE
 }

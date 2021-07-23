@@ -36,10 +36,10 @@ public class ReplyController {
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<ReplyPageDto<Reply>> replySearchList(@RequestParam String content,
+	public ResponseEntity<ReplyPageDto<Reply>> replySearchList(@RequestParam(required = false, defaultValue = "") String searchText,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-		Page<Reply> replies = replyService.replySearchList(content, pageable);
+		Page<Reply> replies = replyService.replySearchList(searchText, pageable);
 
 		int startPage = utilities.getStartPage(replies);
 		int endPage = utilities.getEndPage(replies);

@@ -35,7 +35,7 @@ public class BoardService {
 		return board;
 	}
 
-	// New Board
+	// New
 	@Transactional
 	public Integer registerBoard(Board newBoard) {
 
@@ -46,7 +46,7 @@ public class BoardService {
 		return 1;
 	}
 
-	// Update Board
+	// Update
 	@Transactional
 	public Integer updateBoard(Long id, Board newBoard) {
 		Board board = boardRepository.findById(id).orElseThrow(() -> {
@@ -59,7 +59,7 @@ public class BoardService {
 		return 1;
 	}
 
-	// Delete Board
+	// Delete
 	@Transactional
 	public String deleteBoard(Long id) {
 		try {

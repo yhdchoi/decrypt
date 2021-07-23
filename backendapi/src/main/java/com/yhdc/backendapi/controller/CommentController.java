@@ -37,10 +37,10 @@ public class CommentController {
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<CommentPageDto<Comment>> commentSearchList(@RequestParam String content,
+	public ResponseEntity<CommentPageDto<Comment>> commentSearchList(@RequestParam(required = false, defaultValue = "") String searchText,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-		Page<Comment> comments = commentRepository.findByContentContaining(content, pageable);
+		Page<Comment> comments = commentRepository.findByContentContaining(searchText, pageable);
 
 		int startPage = utilities.getStartPage(comments);
 		int endPage = utilities.getEndPage(comments);

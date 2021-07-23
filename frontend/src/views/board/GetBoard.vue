@@ -53,7 +53,6 @@
             <option value="all" selected>All</option>
             <option value="title">Title</option>
             <option value="body">Content</option>
-            <option value="username">Username</option>
           </select>
         </div>
       </div>

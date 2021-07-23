@@ -30,9 +30,9 @@ public class UserController {
 	private final UserService userService;
 	private final Utilities utilities;
 
-	// Search and List User
+	// Search and List
 	@GetMapping("/list/search")
-	public ResponseEntity<UserPageDto<User>> userSearchList(@RequestParam String username, @RequestParam String email,
+	public ResponseEntity<UserPageDto<User>> userSearchList(@RequestParam(required = false, defaultValue = "") String username, @RequestParam(required = false, defaultValue = "") String email,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
 		Page<User> users = userService.userSearchList(username, email, pageable);
@@ -54,7 +54,7 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
-	// Update User
+	// Update
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Integer> updateUser(@PathVariable Long id, @RequestBody User updateUser) {
 
@@ -63,7 +63,7 @@ public class UserController {
 		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
-	// Delete User
+	// Delete
 	@DeleteMapping("/remove/{id}")
 	public ResponseEntity<String> deleteUser(@PathVariable Long id) {
 

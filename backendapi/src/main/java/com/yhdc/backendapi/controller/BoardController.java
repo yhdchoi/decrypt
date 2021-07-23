@@ -36,10 +36,10 @@ public class BoardController {
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<BoardPageDto<Board>> boardSearchList(@RequestParam String title, @RequestParam String content,
+	public ResponseEntity<BoardPageDto<Board>> boardSearchList(@RequestParam(required = false, defaultValue = "") String searchText,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
-		Page<Board> boards = boardService.boardSearchList(title, content, pageable);
+		Page<Board> boards = boardService.boardSearchList(searchText, searchText, pageable);
 
 		int startPage = utilities.getStartPage(boards);
 		int endPage = utilities.getEndPage(boards);
@@ -58,7 +58,7 @@ public class BoardController {
 		return new ResponseEntity<Board>(board, HttpStatus.OK);
 	}
 
-	// New Board
+	// New
 	@PostMapping("/register")
 	public ResponseEntity<Integer> registerBoard(@Valid @RequestBody Board newBoard) {
 
@@ -67,7 +67,7 @@ public class BoardController {
 		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
-	// Update Board
+	// Update
 	@Transactional
 	@PutMapping("/update/{id}")
 	public ResponseEntity<Integer> updateBoard(@PathVariable Long id, @Valid @RequestBody Board newBoard) {
@@ -77,7 +77,7 @@ public class BoardController {
 		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
-	// Delete Board
+	// Delete
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteBoard(@PathVariable Long id) {
 

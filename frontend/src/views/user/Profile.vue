@@ -7,6 +7,7 @@
           <!-- Profile Card -->
           <div class="bg-white p-3 min-h-100 border-t-4 border-gray-500">
             <div class="image overflow-hidden">
+              <!-- Profile Image -->
               <img
                 class="h-52 w-52 mx-auto"
                 src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
@@ -14,12 +15,10 @@
               />
             </div>
             <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">
-              FullName
+              @username
             </h1>
-            <h3 class="text-gray-600 font-lg text-semibold leading-6">
-              Company Inc.
-            </h3>
-            <p class="text-sm text-gray-500 leading-6">BIO about yourself.</p>
+            <!-- Intro -->
+            <p class="text-sm text-gray-500 leading-6">Intro about yourself.</p>
             <ul
               class="
                 bg-gray-100
@@ -35,8 +34,9 @@
             >
               <li class="flex items-center py-3">
                 <span>Status</span>
-                <span class="ml-auto"
-                  ><span
+                <span class="ml-auto">
+                  <!-- Status -->
+                  <span
                     class="bg-green-500 py-1 px-2 rounded text-white text-sm"
                     >Active</span
                   ></span
@@ -44,6 +44,7 @@
               </li>
               <li class="flex items-center py-3">
                 <span class="text-sm">Member since : </span>
+                <!-- RegDate -->
                 <span class="ml-auto text-xs">Nov 07, 2016</span>
               </li>
             </ul>
@@ -54,7 +55,7 @@
         <!-- Right Side -->
         <div class="w-full md:w-9/12 mx-2 h-64">
           <!-- About Section -->
-          <div class="bg-white min-h-50 p-3 shadow-sm rounded-sm">
+          <div class="bg-white min-h-50 p-3 mb-4 shadow-sm rounded-sm">
             <div
               class="
                 flex
@@ -98,18 +99,6 @@
                   <div class="px-4 py-2">Female</div>
                 </div>
                 <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Contact No.</div>
-                  <div class="px-4 py-2">+11 998001001</div>
-                </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Current Address</div>
-                  <div class="px-4 py-2">Beech Creek, PA, Pennsylvania</div>
-                </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Permanant Address</div>
-                  <div class="px-4 py-2">Arlington Heights, IL, Illinois</div>
-                </div>
-                <div class="grid grid-cols-2">
                   <div class="px-4 py-2 font-semibold">Email.</div>
                   <div class="px-4 py-2">
                     <a class="text-blue-800" href="mailto:jane@example.com"
@@ -117,16 +106,10 @@
                     >
                   </div>
                 </div>
-                <div class="grid grid-cols-2">
-                  <div class="px-4 py-2 font-semibold">Birthday</div>
-                  <div class="px-4 py-2">Feb 06, 1998</div>
-                </div>
               </div>
             </div>
           </div>
-          <!-- End of about section -->
-
-          <div class="my-4"></div>
+          <!-- End of About -->
 
           <!-- Experience and Education -->
           <div class="bg-white min-h-50 p-3 shadow-sm rounded-sm">
@@ -159,10 +142,9 @@
                       />
                     </svg>
                   </span>
-
-                  <!-- Experience -->
                   <span class="tracking-wide">Experience</span>
                 </div>
+                <!-- Experience LOOP -->
                 <ul class="list-inside space-y-2">
                   <li>
                     <div class="text-teal-600">Owner at Her Company Inc.</div>
@@ -207,6 +189,7 @@
                   </span>
                   <span class="tracking-wide">Education</span>
                 </div>
+                <!-- Education LOOP -->
                 <ul class="list-inside space-y-2">
                   <li>
                     <div class="text-teal-600">Masters Degree in Oxford</div>

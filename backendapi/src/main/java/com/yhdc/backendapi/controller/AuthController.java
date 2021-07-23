@@ -28,9 +28,9 @@ public class AuthController {
 		return new ResponseEntity<Integer>(1, HttpStatus.OK);
 	}
 	
-	// Google Login
+	// Google OAuth
 	@PostMapping("/user/signup/glg")
-	public ResponseEntity<Integer> signupGoogle(@RequestBody User newUser) {
+	public ResponseEntity<Integer> signupGoogle(@RequestBody User glgProfile) {
 
 
 		return new ResponseEntity<Integer>(1, HttpStatus.OK);

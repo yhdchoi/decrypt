@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.yhdc.backendapi.model.User;
-import com.yhdc.backendapi.model.enums.EnableType;
+import com.yhdc.backendapi.model.enums.GenderType;
 import com.yhdc.backendapi.model.enums.RoleType;
+import com.yhdc.backendapi.model.enums.StatusType;
 import com.yhdc.backendapi.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -50,19 +51,20 @@ public class UserService {
 		return user;
 	}
 
-	// New User
+	// New Signup
 	@Transactional
 	public Integer registerUser(User newUser) {
 
+		newUser.setGender(GenderType.EMPTY);
 		newUser.setRole(RoleType.USER);
-		newUser.setEnable(EnableType.ENABLE);
+		newUser.setStatus(StatusType.ACTIVE);
 
 		userRepository.save(newUser);
 
 		return 1;
 	}
 
-	// Update User
+	// Update
 	@Transactional
 	public Integer updateUser(Long id, User updateUser) {
 		User user = userRepository.findById(id).orElseThrow(() -> {
@@ -75,7 +77,7 @@ public class UserService {
 		return 1;
 	}
 
-	// Delete User
+	// Delete
 	@Transactional
 	public String deleteUser(Long id) {
 		try {

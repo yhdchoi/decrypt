@@ -50,6 +50,21 @@
           Login
         </button>
       </form>
+      <div>
+        <router-link
+                :to="{ name: 'Signup' }"
+                class="
+                  text-gray-300
+                  hover:bg-gray-700 hover:text-purple-500
+                  px-3
+                  py-2
+                  rounded-md
+                  text-sm
+                  font-medium
+                "
+                >SignUp</router-link
+              >
+      </div>
     </div>
   </div>
 </template>

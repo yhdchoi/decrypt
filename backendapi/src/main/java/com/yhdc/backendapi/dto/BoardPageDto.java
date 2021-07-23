@@ -1,6 +1,8 @@
 package com.yhdc.backendapi.dto;
 
-import org.springframework.http.HttpStatus;
+import org.springframework.data.domain.Page;
+
+import com.yhdc.backendapi.model.Board;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,8 +13,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseDto<T> {
+public class BoardPageDto<T> {
 
-	HttpStatus status;
-	T data;
+	private Page<Board> boards;
+	private int startPage;
+	private int endPage;
 }

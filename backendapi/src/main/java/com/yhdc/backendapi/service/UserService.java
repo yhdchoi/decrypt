@@ -40,10 +40,11 @@ public class UserService {
 	}
 
 	// Detail
+	@Transactional(readOnly = true)
 	public User detail(Long id) {
 
 		User user = userRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE USER DOES NOT EXIST.");
+			return new IllegalArgumentException("THE USER [" + id + "] DOES NOT EXIST.");
 		});
 
 		return user;
@@ -51,37 +52,38 @@ public class UserService {
 
 	// New User
 	@Transactional
-	public User registerUser(User newUser) {
+	public Integer registerUser(User newUser) {
 
 		newUser.setRole(RoleType.USER);
 		newUser.setEnable(EnableType.ENABLE);
 
-		User user = userRepository.save(newUser);
+		userRepository.save(newUser);
 
-		return user;
+		return 1;
 	}
 
 	// Update User
 	@Transactional
-	public User updateUser(Long id, User updateUser) {
+	public Integer updateUser(Long id, User updateUser) {
 		User user = userRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE USER DOES NOT EXIST.");
+			return new IllegalArgumentException("THE USER [" + id + "] DOES NOT EXIST.");
 		});
 
 		user.setEmail(updateUser.getEmail());
 		user.setPassword(updateUser.getPassword());
 
-		return user;
+		return 1;
 	}
 
 	// Delete User
+	@Transactional
 	public String deleteUser(Long id) {
 		try {
 			userRepository.deleteById(id);
 		} catch (EmptyResultDataAccessException e) {
-			return "THE USER DOES NOT EXIST.";
+			return "THE USER [" + id + "] DOES NOT EXIST.";
 		}
+		return "THE USER [" + id + "] HAS BEEN DELETED";
 
-		return "DELETED";
 	}
 }

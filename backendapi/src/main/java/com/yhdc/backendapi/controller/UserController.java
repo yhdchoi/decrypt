@@ -9,15 +9,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yhdc.backendapi.dto.UserPageDto;
 import com.yhdc.backendapi.model.User;
 import com.yhdc.backendapi.service.UserService;
+import com.yhdc.backendapi.utils.Utilities;
 
 import lombok.RequiredArgsConstructor;
 
@@ -27,15 +28,21 @@ import lombok.RequiredArgsConstructor;
 public class UserController {
 
 	private final UserService userService;
+	private final Utilities utilities;
 
 	// Search and List User
-	@GetMapping("/list")
-	public ResponseEntity<Page<User>> userSearchList(@RequestParam String username, @RequestParam String email,
+	@GetMapping("/list/search")
+	public ResponseEntity<UserPageDto<User>> userSearchList(@RequestParam String username, @RequestParam String email,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
 		Page<User> users = userService.userSearchList(username, email, pageable);
 
-		return new ResponseEntity<Page<User>>(users, HttpStatus.OK);
+		int startPage = utilities.getStartPage(users);
+		int endPage = utilities.getEndPage(users);
+
+		UserPageDto<User> userPage = new UserPageDto<>(users, startPage, endPage);
+
+		return new ResponseEntity<UserPageDto<User>>(userPage, HttpStatus.OK);
 	}
 
 	// Detail
@@ -47,22 +54,13 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 	}
 
-	// New User
-	@PostMapping("/register")
-	public ResponseEntity<User> registerUser(@RequestBody User newUser) {
-
-		User user = userService.registerUser(newUser);
-
-		return new ResponseEntity<User>(user, HttpStatus.OK);
-	}
-
 	// Update User
 	@PutMapping("/update/{id}")
-	public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updateUser) {
+	public ResponseEntity<Integer> updateUser(@PathVariable Long id, @RequestBody User updateUser) {
 
-		User user = userService.updateUser(id, updateUser);
+		int result = userService.updateUser(id, updateUser);
 
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// Delete User

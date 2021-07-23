@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yhdc.backendapi.dto.CommentPageDto;
 import com.yhdc.backendapi.model.Comment;
 import com.yhdc.backendapi.repository.CommentRepository;
+import com.yhdc.backendapi.utils.Utilities;
 
 import lombok.RequiredArgsConstructor;
 
@@ -31,19 +33,26 @@ import lombok.RequiredArgsConstructor;
 public class CommentController {
 
 	private final CommentRepository commentRepository;
+	private final Utilities utilities;
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<Page<Comment>> commentSearchList(@RequestParam String content,
+	public ResponseEntity<CommentPageDto<Comment>> commentSearchList(@RequestParam String content,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+
 		Page<Comment> comments = commentRepository.findByContentContaining(content, pageable);
 
-		return new ResponseEntity<Page<Comment>>(comments, HttpStatus.OK);
+		int startPage = utilities.getStartPage(comments);
+		int endPage = utilities.getEndPage(comments);
+
+		CommentPageDto<Comment> commentPage = new CommentPageDto<>(comments, startPage, endPage);
+
+		return new ResponseEntity<CommentPageDto<Comment>>(commentPage, HttpStatus.OK);
 	}
 
 	// Detail
-	@GetMapping("/read/{id}")
-	public ResponseEntity<Comment> read(@PathVariable Long id) {
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<Comment> detail(@PathVariable Long id) {
 		Comment comment = commentRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("THE COMMENT DOES NOT EXIST.");
 		});

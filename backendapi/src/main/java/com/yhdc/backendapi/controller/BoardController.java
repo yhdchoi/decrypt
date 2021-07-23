@@ -3,7 +3,6 @@ package com.yhdc.backendapi.controller;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yhdc.backendapi.dto.BoardPageDto;
 import com.yhdc.backendapi.model.Board;
-import com.yhdc.backendapi.repository.BoardRepository;
+import com.yhdc.backendapi.service.BoardService;
+import com.yhdc.backendapi.utils.Utilities;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,58 +31,58 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class BoardController {
 
-	private final BoardRepository boardRepository;
+	private final BoardService boardService;
+	private final Utilities utilities;
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<Page<Board>> boardSearchList(@RequestParam String title, @RequestParam String content,
+	public ResponseEntity<BoardPageDto<Board>> boardSearchList(@RequestParam String title, @RequestParam String content,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-		Page<Board> boards = boardRepository.findByTitleContainingOrContentContaining(title, content, pageable);
 
-		return new ResponseEntity<Page<Board>>(boards, HttpStatus.OK);
+		Page<Board> boards = boardService.boardSearchList(title, content, pageable);
+
+		int startPage = utilities.getStartPage(boards);
+		int endPage = utilities.getEndPage(boards);
+
+		BoardPageDto<Board> boardPage = new BoardPageDto<>(boards, startPage, endPage);
+
+		return new ResponseEntity<BoardPageDto<Board>>(boardPage, HttpStatus.OK);
 	}
 
 	// Detail
-	@GetMapping("/read/{id}")
-	public ResponseEntity<Board> read(@PathVariable Long id) {
-		Board board = boardRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE BOARD DOES NOT EXIST.");
-		});
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<Board> detail(@PathVariable Long id) {
+
+		Board board = boardService.detail(id);
 
 		return new ResponseEntity<Board>(board, HttpStatus.OK);
 	}
 
 	// New Board
 	@PostMapping("/register")
-	public ResponseEntity<Board> registerBoard(@Valid @RequestBody Board newBoard) {
-		Board board = boardRepository.save(newBoard);
+	public ResponseEntity<Integer> registerBoard(@Valid @RequestBody Board newBoard) {
 
-		return new ResponseEntity<Board>(board, HttpStatus.OK);
+		int result = boardService.registerBoard(newBoard);
+
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// Update Board
 	@Transactional
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Board> updateBoard(@PathVariable Long id, @Valid @RequestBody Board newBoard) {
-		Board board = boardRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE BOARD DOES NOT EXIST.");
-		});
+	public ResponseEntity<Integer> updateBoard(@PathVariable Long id, @Valid @RequestBody Board newBoard) {
 
-		board.setTitle(newBoard.getTitle());
-		board.setContent(newBoard.getContent());
+		int result = boardService.updateBoard(id, newBoard);
 
-		return new ResponseEntity<Board>(board, HttpStatus.OK);
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// Delete Board
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteBoard(@PathVariable Long id) {
-		try {
-			boardRepository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<String>("THE BOARD DOES NOT EXIST.", HttpStatus.NOT_FOUND);
-		}
 
-		return new ResponseEntity<String>("DELETED", HttpStatus.OK);
+		String result = boardService.deleteBoard(id);
+
+		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 }

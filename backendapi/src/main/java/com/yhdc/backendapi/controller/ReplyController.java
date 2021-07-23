@@ -3,7 +3,6 @@ package com.yhdc.backendapi.controller;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -20,8 +19,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.yhdc.backendapi.dto.ReplyPageDto;
 import com.yhdc.backendapi.model.Reply;
-import com.yhdc.backendapi.repository.ReplyRepository;
+import com.yhdc.backendapi.service.ReplyService;
+import com.yhdc.backendapi.utils.Utilities;
 
 import lombok.RequiredArgsConstructor;
 
@@ -30,58 +31,59 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ReplyController {
 
-	private final ReplyRepository replyRepository;
+	private final ReplyService replyService;
+	private final Utilities utilities;
 
 	// Search List
 	@GetMapping("/list")
-	public ResponseEntity<Page<Reply>> replySearchList(@RequestParam String content,
+	public ResponseEntity<ReplyPageDto<Reply>> replySearchList(@RequestParam String content,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-		Page<Reply> replies = replyRepository.findByContentContaining(content, pageable);
 
-		return new ResponseEntity<Page<Reply>>(replies, HttpStatus.OK);
+		Page<Reply> replies = replyService.replySearchList(content, pageable);
+
+		int startPage = utilities.getStartPage(replies);
+		int endPage = utilities.getEndPage(replies);
+
+		ReplyPageDto<Reply> replyPage = new ReplyPageDto<>(replies, startPage, endPage);
+
+		return new ResponseEntity<ReplyPageDto<Reply>>(replyPage, HttpStatus.OK);
 	}
 
 	// Detail
-	@GetMapping("/read/{id}")
-	public ResponseEntity<Reply> read(@PathVariable Long id) {
-		Reply reply = replyRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE COMMENT DOES NOT EXIST.");
-		});
+	@GetMapping("/detail/{id}")
+	public ResponseEntity<Reply> detail(@PathVariable Long id) {
+
+		Reply reply = replyService.detail(id);
 
 		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
 	}
 
 	// New Comment
 	@PostMapping("/register")
-	public ResponseEntity<Reply> registerReply(@Valid @RequestBody Reply newReply) {
-		Reply reply = replyRepository.save(newReply);
+	public ResponseEntity<Integer> registerReply(@Valid @RequestBody Reply newReply) {
 
-		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
+		int result = replyService.registerReply(newReply);
+
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// Update Comment
 	@Transactional
 	@PutMapping("/update/{id}")
-	public ResponseEntity<Reply> updateReply(@PathVariable Long id, @Valid @RequestBody Reply newReply) {
-		Reply reply = replyRepository.findById(id).orElseThrow(() -> {
-			return new IllegalArgumentException("THE REPLY DOES NOT EXIST.");
-		});
+	public ResponseEntity<Integer> updateReply(@PathVariable Long id, @Valid @RequestBody Reply newReply) {
 
-		reply.setContent(newReply.getContent());
+		int result = replyService.updateReply(id, newReply);
 
-		return new ResponseEntity<Reply>(reply, HttpStatus.OK);
+		return new ResponseEntity<Integer>(result, HttpStatus.OK);
 	}
 
 	// Delete Comment
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<String> deleteReply(@PathVariable Long id) {
-		try {
-			replyRepository.deleteById(id);
-		} catch (EmptyResultDataAccessException e) {
-			return new ResponseEntity<String>("THE REPLY DOES NOT EXIST.", HttpStatus.NOT_FOUND);
-		}
 
-		return new ResponseEntity<String>("DELETED", HttpStatus.OK);
+		String result = replyService.deleteReply(id);
+
+		return new ResponseEntity<String>(result, HttpStatus.OK);
 	}
 
 }

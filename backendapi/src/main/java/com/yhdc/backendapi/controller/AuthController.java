@@ -19,26 +19,20 @@ public class AuthController {
 
 	private final UserService userService;
 
-	// Logout
-	@PostMapping("/join")
-	public ResponseEntity<Integer> joinForm(@RequestBody User newUser) {
+	// New User
+	@PostMapping("/user/signup")
+	public ResponseEntity<Integer> registerUser(@RequestBody User newUser) {
 
 		userService.registerUser(newUser);
 
 		return new ResponseEntity<Integer>(1, HttpStatus.OK);
 	}
+	
+	// Google Login
+	@PostMapping("/user/signup/glg")
+	public ResponseEntity<Integer> signupGoogle(@RequestBody User newUser) {
 
-	// Form Login
-//	@PostMapping("/login")
-//	public ResponseEntity<Integer> login(@RequestBody User user, HttpSession session) {
-//
-//		User principal = userService.loginUser(user);
-//		
-//		if(principal != null) {
-//			session.setAttribute("principla", principal);
-//		}
-//
-//		return new ResponseEntity<Integer>(1, HttpStatus.OK);
-//	}
 
+		return new ResponseEntity<Integer>(1, HttpStatus.OK);
+	}
 }

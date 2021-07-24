@@ -1,6 +1,6 @@
 <template>
   <!-- Search -->
-  <div class="box w-4/5 pt-6 mb-6 mx-auto">
+  <div class="box w-3/5 pt-6 mb-6 mx-auto">
     <div class="box-wrapper">
       <div
         class="
@@ -14,7 +14,7 @@
           border border-gray-200
         "
       >
-        <button @click="getBoard()" class="outline-none focus:outline-none">
+        <button @click="searchBoard()" class="outline-none focus:outline-none">
           <svg
             class="w-5 text-gray-600 h-5 cursor-pointer"
             fill="none"
@@ -31,7 +31,7 @@
           type="search"
           name=""
           id=""
-          @keydown.enter="getImages()"
+          @keydown.enter="searchBoard()"
           placeholder="search"
           x-model="q"
           class="
@@ -43,7 +43,7 @@
             bg-transparent
           "
         />
-        <div class="select">
+        <!-- <div class="select">
           <select
             name=""
             id=""
@@ -54,22 +54,23 @@
             <option value="title">Title</option>
             <option value="body">Content</option>
           </select>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
 
   <hr />
+
   <div class="my-3">
     <a class="text-2xl text-gray-700 font-bold">Recent Posts</a>
   </div>
 
   <!-- List Template -->
   <div
-    class="px-10 my-4 py-6 rounded shadow-xl bg-gray-100 w-4/5 mx-auto max-h-60"
+    class="px-10 my-4 py-6 rounded shadow-xl bg-gray-100 w-3/5 mx-auto max-h-60" 
   >
     <div class="flex justify-between items-center">
-      <span class="font-light text-gray-600">March 28, 2021</span>
+      <span class="font-light text-gray-600">{{ modDate }}</span>
       <a
         class="px-2 py-1 text-gray-600 font-bold rounded hover:text-yellow-500"
         href="#"
@@ -91,13 +92,9 @@
       </a>
     </div>
     <div class="mt-2">
-      <a class="text-xl text-gray-700 font-bold hover:text-gray-600" href="#">
-        Title
-      </a>
-      <p class="mt-2 text-gray-600">
-        Content Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor
-        omnis rem qui vero optio quae neque odio consequatur nulla est itaque,
-        quas a rerum labore modi ullam assumenda error harum.
+      <h5 class="font-bold text-2xl">{{ title }}</h5>
+      <p class="truncate mt-2 text-base text-gray-600">
+        {{ content }}
       </p>
     </div>
     <div class="flex justify-center items-center mt-4">
@@ -109,5 +106,15 @@
 <script>
   export default {
     name: "GetBoard",
+    data() {
+      return {
+        title: "Title",
+        content: "Content",
+      };
+    },
+    props: {},
+    methods: {
+      searchBoard() {},
+    },
   };
 </script>

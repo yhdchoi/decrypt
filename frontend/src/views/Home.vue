@@ -76,6 +76,7 @@
           </svg>
         </div>
       </div>
+      <!-- Terminal Window -->
       <div class="h-72 p-1 bg-gray-900 font-mono">
         <div class="my-3">
           <span class="text-green-500">➜</span>
@@ -83,74 +84,24 @@
           <span class="text-green-500">↲</span>
         </div>
         <div class="mb-3">
-          <span class="text-green-600"
-            >the Anonymous.</span
-          >
+          <span class="text-green-600">the Anonymous.</span>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Recent Posts -->
-  <div class="relative max-h-screen pb-20 font-mono text-cyan-900">
+  <div class="min-h-screen pb-10 text-gray-900">
     <div class="flex justify-center py-5">
       <div class="container max-w-3xl p-4">
-        <h1 class="py-5">Recent Posts:</h1>
-
-        <div class="post py-5 max-h-80">
-          <a href="#"
-            ><h2 class="underline hover:text-cyan-900">
-              Lorem ipsum dolor sit amet consectetur.
-            </h2></a
-          >
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            repudiandae quae praesentium architecto tempora suscipit nesciunt
-            sunt hic optio vitae.
-          </p>
-        </div>
-
-        <div class="post py-5 max-h-80">
-          <a href="#"
-            ><h2 class="underline hover:text-cyan-900">
-              Lorem ipsum dolor sit amet consectetur.
-            </h2></a
-          >
-          <p>Repudiandae labore fugiat at quo maiores architecto nam odit!</p>
-        </div>
-        <div class="post py-5 max-h-80">
-          <a href="#"
-            ><h2 class="underline hover:text-cyan-900">
-              Lorem ipsum dolor sit amet consectetur.
-            </h2></a
-          >
-          <p>
-            Perferendis natus qui omnis ratione ab assumenda necessitatibus
-            adipisci non reiciendis, quas, a ad quibusdam incidunt quis.
-          </p>
-        </div>
-        <div class="post py-5 max-h-80">
-          <a href="#"
-            ><h2 class="underline hover:text-cyan-900">
-              Lorem ipsum dolor sit amet consectetur.
-            </h2></a
-          >
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            repudiandae quae praesentium architecto tempora suscipit nesciunt
-            sunt hic optio vitae.
-          </p>
-        </div>
-        <div class="post py-5 max-h-80">
-          <a href="#"
-            ><h2 class="underline hover:text-cyan-900">
-              Lorem ipsum dolor sit amet consectetur.
-            </h2></a
-          >
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Deleniti
-            repudiandae quae praesentium architecto tempora suscipit nesciunt
-            sunt hic optio vitae.
+        <h1 class="text-2xl underline py-5">Recent Posts:</h1>
+        <!-- Loop -->
+        <div class="post py-5 max-h-70">
+          <h2 class="font-bold text-xl " id="">
+            {{ title }}
+          </h2>
+          <p class="turncate text-base" id="">
+            {{ content }}
           </p>
         </div>
       </div>
@@ -161,5 +112,13 @@
 <script>
   export default {
     name: "Home",
+    data() {
+      return {
+        title: "Title",
+        content: "Content",
+      };
+    },
+    props: {},
+    methods: {},
   };
 </script>

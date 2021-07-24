@@ -51,7 +51,7 @@ public class UserService {
 		return user;
 	}
 
-	// New Signup
+	// New
 	@Transactional
 	public Integer registerUser(User newUser) {
 

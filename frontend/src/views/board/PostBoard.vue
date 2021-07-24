@@ -119,11 +119,10 @@
                 required
               ></textarea>
             </div>
-            <!-- Image Insert -->
-            <div></div>
+            
             <div class="flex justify-center">
               <button
-                class="p-2 border w-1/4 rounded-md bg-gray-800 text-white"
+                class="p-2 border w-1/4 rounded-md bg-gray-800 text-white" @click="postBoard()"
               >
                 Post
               </button>
@@ -136,7 +135,19 @@
 </template>
 
 <script>
-export default {
-  name: "PostBoard",
-};
+  export default {
+    name: "PostBoard",
+    data() {
+      return {};
+    },
+    mounted() {
+
+    },
+    props: {},
+    methods: {
+      postBoard() {
+
+      }
+    },
+  };
 </script>

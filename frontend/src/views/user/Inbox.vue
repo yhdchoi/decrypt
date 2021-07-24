@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-gray-100 h-screen w-screen flex-auto inline-flex">
+  <div class="bg-gray-100 h-screen w-full flex-auto inline-flex">
     
     <!-- List -->
     <section
@@ -16,20 +16,21 @@
       "
     >
       <ul class="mt-6">
+        <!-- Loop -->
         <li
           class="py-5 border-b px-3 transition bg-gray-100 hover:bg-indigo-100"
         >
-          <a href="#" class="flex justify-between items-center">
-            <h3 class="text-lg font-semibold">Akhil Gautam</h3>
-            <p class="text-md text-gray-400">23m ago</p>
+          <a href="#" class="flex justify-between items-center ">
+            <h3 class="text-lg font-semibold">{{ username }}</h3>
+            <p class="text-md text-gray-400">{{ regDate }}</p>
           </a>
-          <div class="text-md italic text-gray-400">You have been invited!</div>
+          <div class="text-md italic text-gray-400">{{ content }}</div>
         </li>
       </ul>
     </section>
 
     <!-- Read Details -->
-    <section class="w-8/12 px-4 flex flex-col bg-white rounded-2xl mr-3 my-4">
+    <section class="w-full px-4 flex flex-col bg-white rounded-2xl mr-3 my-4">
       <div class="flex justify-between items-center h-48 border-b-2 mb-8">
         <div class="flex space-x-4 items-center">
           <div class="h-12 w-12 rounded-full overflow-hidden">
@@ -40,8 +41,8 @@
             />
           </div>
           <div class="flex flex-col">
-            <h3 class="font-semibold text-lg">Username</h3>
-            <p class="text-light text-gray-400">User Email</p>
+            <h3 class="font-semibold text-lg">{{ username }}</h3>
+            <p class="text-light text-gray-400">{{ email }}</p>
           </div>
         </div>
         <div>
@@ -112,9 +113,9 @@
       </div>
 
       <section>
-        <h1 class="font-bold text-2xl">Title</h1>
+        <h1 class="font-bold text-2xl">{{ title }}</h1>
         <article class="mt-8 text-gray-500 leading-7 tracking-wider">
-          <p>
+          <p> {{ content }}
             Design and develop enterprise-facing UI and consumer-facing UI as
             well as REST API backends.Work with Product Managers and User
             Experience designers to create an appealing user experience for
@@ -180,6 +181,7 @@
           </li>
         </ul>
       </section>
+      <!-- Write Reply -->
       <section class="mt-6 border rounded-xl bg-gray-50 mb-3">
         <textarea
           class="w-full bg-gray-50 p-2 rounded-xl"
@@ -214,5 +216,21 @@
 <script>
   export default {
     name: "Dashboard",
+    data() {
+      return {
+        username: 'Username',
+        lastname: 'Lastname',
+        firstname: 'Firstname',
+        email: 'abc@gmail.com',
+        gender: 'Gender',
+        status: 'Status',
+        regDate: 'Dec. 12, 2020',
+        intro: 'Intro',
+        title: 'Title',
+        content: 'Content',
+      };
+    },
+    props: {},
+    methods: {},
   };
 </script>

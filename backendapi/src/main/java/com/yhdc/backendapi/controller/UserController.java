@@ -32,7 +32,9 @@ public class UserController {
 
 	// Search and List
 	@GetMapping("/list/search")
-	public ResponseEntity<UserPageDto<User>> userSearchList(@RequestParam(required = false, defaultValue = "") String username, @RequestParam(required = false, defaultValue = "") String email,
+	public ResponseEntity<UserPageDto<User>> userSearchList(
+			@RequestParam(required = false, defaultValue = "") String username, 
+			@RequestParam(required = false, defaultValue = "") String email,
 			@PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
 
 		Page<User> users = userService.userSearchList(username, email, pageable);

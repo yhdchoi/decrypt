@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import com.yhdc.backendapi.model.Board;
 
@@ -17,11 +20,11 @@ public interface BoardRepository extends JpaRepository<Board, Long> {
 	Page<Board> findByTitleContainingOrContentContaining(String title, String content, Pageable pageable);
 
 	// Get all with MemberId
-//	@Query("SELECT b, m FROM Board b LEFT JOIN b.member m WHERE m.id = :id")
-//	List<Board> getBoardWithMember(@Param("id") Long id);
+	@Query("SELECT b, m FROM Board b LEFT JOIN b.member m WHERE m.id = :id")
+	List<Board> getBoardWithMember(@Param("id") Long id);
 
 	// Delete with MemberId
-//	@Modifying
-//	@Query("DELETE FROM Board b WHERE b.member.id = :id")
-//	void deleteByMemberId(Long id);
+	@Modifying
+	@Query("DELETE FROM Board b WHERE b.member.id = :id")
+	void deleteByMemberId(Long id);
 }

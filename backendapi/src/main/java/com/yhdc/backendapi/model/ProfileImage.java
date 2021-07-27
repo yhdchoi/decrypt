@@ -33,3 +33,4 @@ public class ProfileImage {
 	@JoinColumn(name = "userId")
 	private User user;
 }
+
